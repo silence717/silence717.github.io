@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>webpack实践笔记入门 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[webpack官网文档地址]:（http://webpack.github.io/docs/what-is-webpack.html）[实践工程地址]: (https://github.com/silence717/webpack-practice )本篇文章可切换到分支 step1查看源代码。
+what is webpack?官网对webpack的定义是MODULE BUNDLER，目的就是把">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack实践笔记入门">
+<meta property="og:url" content="https://github.com/silence717/2016/09/18/webpack-start/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="[webpack官网文档地址]:（http://webpack.github.io/docs/what-is-webpack.html）[实践工程地址]: (https://github.com/silence717/webpack-practice )本篇文章可切换到分支 step1查看源代码。
+what is webpack?官网对webpack的定义是MODULE BUNDLER，目的就是把">
+<meta property="og:updated_time" content="2016-11-21T09:21:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack实践笔记入门">
+<meta name="twitter:description" content="[webpack官网文档地址]:（http://webpack.github.io/docs/what-is-webpack.html）[实践工程地址]: (https://github.com/silence717/webpack-practice )本篇文章可切换到分支 step1查看源代码。
+what is webpack?官网对webpack的定义是MODULE BUNDLER，目的就是把">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-webpack-start" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack实践笔记入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="webpack官网文档地址-（http-webpack-github-io-docs-what-is-webpack-html）"><a href="#webpack官网文档地址-（http-webpack-github-io-docs-what-is-webpack-html）" class="headerlink" title="[webpack官网文档地址]:（http://webpack.github.io/docs/what-is-webpack.html）"></a>[webpack官网文档地址]:（<a href="http://webpack.github.io/docs/what-is-webpack.html）" target="_blank" rel="external">http://webpack.github.io/docs/what-is-webpack.html）</a></h3><h3 id="实践工程地址-https-github-com-silence717-webpack-practice"><a href="#实践工程地址-https-github-com-silence717-webpack-practice" class="headerlink" title="[实践工程地址]: (https://github.com/silence717/webpack-practice )"></a>[实践工程地址]: (<a href="https://github.com/silence717/webpack-practice">https://github.com/silence717/webpack-practice</a> )</h3><p>本篇文章可切换到分支 step1查看源代码。</p>
+<h3 id="what-is-webpack"><a href="#what-is-webpack" class="headerlink" title="what is webpack?"></a>what is webpack?</h3><p>官网对webpack的定义是MODULE BUNDLER，目的就是把有依赖关系的各种文件打包成一系列的静态资源。</p>
+<h3 id="简单分步实践"><a href="#简单分步实践" class="headerlink" title="简单分步实践"></a>简单分步实践</h3><h4 id="创建一个空文件夹，进入"><a href="#创建一个空文件夹，进入" class="headerlink" title="创建一个空文件夹，进入"></a>创建一个空文件夹，进入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /Users/silence/code/personal/webpack-practice</div></pre></td></tr></table></figure>
+<h4 id="全局安装-webpack"><a href="#全局安装-webpack" class="headerlink" title="全局安装 webpack"></a>全局安装 webpack</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack -g</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="创建index-html文件"><a href="#创建index-html文件" class="headerlink" title="创建index.html文件"></a>创建index.html文件</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>webpack-practice<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="创建app-js"><a href="#创建app-js" class="headerlink" title="创建app.js"></a>创建app.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="string">'hello world!'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'App loaded'</span>);</div></pre></td></tr></table></figure>
+<h4 id="执行webpack命令"><a href="#执行webpack命令" class="headerlink" title="执行webpack命令"></a>执行webpack命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack ./app.js ./bundle.js</div></pre></td></tr></table></figure>
+<p>这个时候项目中多了一个bundle.js文件，使用script标签将其引入到index.html中<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在浏览器中打开index.html文件，页面出现 hello world! 文字。</p>
+<h4 id="动态打包文件"><a href="#动态打包文件" class="headerlink" title="动态打包文件"></a>动态打包文件</h4><p>在正常开发过程中我们不断在修改app.js文件，所以得不断执行打包命令，这样及其不方便。<br>我们需要针对我们的修改及时作出响应处理。</p>
+<p>为此创建一个webpack.config.js文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="attr">entry</span>: [<span class="string">'./app.js'</span>],</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">        <span class="attr">filename</span>: <span class="string">'bundle.js'</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>entry： 入口文件 使用哪个文件作为项目的入口</p>
+<p>output： 出口文件 打包后的文件放在哪里</p>
+<h5 id="一、-使用watch模式："><a href="#一、-使用watch模式：" class="headerlink" title="一、 使用watch模式："></a>一、 使用watch模式：</h5><p>webpack 提供了一个命令–watch，一直监听文件，只要有变化就自动执行打包命令。这样会有两个问题：</p>
+<pre><code>* 1. 我们访问的地址为本地文件地址。
+* 2. 浏览器不能自动刷新。
+</code></pre><h5 id="二、-webpack-dev-server"><a href="#二、-webpack-dev-server" class="headerlink" title="二、 webpack-dev-server"></a>二、 webpack-dev-server</h5><p>为了在开发过程中优化开发体验，webpack提供了一个webpack-dev-server</p>
+<h6 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack-dev-server</div></pre></td></tr></table></figure>
+<h6 id="使用webpack-dev-server启动"><a href="#使用webpack-dev-server启动" class="headerlink" title="使用webpack-dev-server启动"></a>使用webpack-dev-server启动</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack-dev-server</div></pre></td></tr></table></figure>
+<p>命令行出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">http://localhost:8080/webpack-dev-server/</div><div class="line">webpack result is served from /</div><div class="line">content is served from /Users/silence/code/personal/webpack</div><div class="line">Hash: 3786f12b06517d34cf85</div><div class="line">Version: webpack 1.13.2</div></pre></td></tr></table></figure></p>
+<p>按照提示在浏览器中访问： <a href="http://localhost:8080/webpack-dev-server/" target="_blank" rel="external">http://localhost:8080/webpack-dev-server/</a> ，<br>如愿出现hello world！字样。</p>
+<p>在app.js中随意更改输出内容并保存，会看到浏览器自动刷新并输出更改后的内容。</p>
+<h4 id="build多个文件"><a href="#build多个文件" class="headerlink" title="build多个文件"></a>build多个文件</h4><p>有两种解决方案</p>
+<h5 id="1-使用require-js，引入新模块到app-js中"><a href="#1-使用require-js，引入新模块到app-js中" class="headerlink" title="1 使用require.js，引入新模块到app.js中"></a>1 使用require.js，引入新模块到app.js中</h5><p>创建login.js，文件内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'login in'</span>);</div></pre></td></tr></table></figure></p>
+<p>在app.js中引入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'./login'</span>);</div></pre></td></tr></table></figure></p>
+<p>备注一下，webpack原生支持commonJs规范。<br>运行dev-server，console中输出login.js的文件内容.</p>
+<h5 id="2-在webpack-config-js中更改entry"><a href="#2-在webpack-config-js中更改entry" class="headerlink" title="2. 在webpack-config.js中更改entry"></a>2. 在webpack-config.js中更改entry</h5><p>创建utils.js文件，内容为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'utils.js file ...'</span>);</div></pre></td></tr></table></figure></p>
+<p>修改entry的配置为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">entry: [<span class="string">'./app.js'</span>, <span class="string">'./utils.js'</span>],</div></pre></td></tr></table></figure></p>
+<p>运行dev-server，console中输出utils.js的文件内容。</p>
+<p>这就是webpacj的入门级使用，个人体验</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/18/webpack-start/" class="archive-article-date">
+  	<time datetime="2016-09-18T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-18</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/09/19/webpack-loaders/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          webpack实践笔记添加loaders
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/09/understanding-module-exports-exports-node-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【翻译】understanding-module-exports-exports-node-js</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="webpack-start" data-title="webpack实践笔记入门" data-url="https://github.com/silence717/2016/09/18/webpack-start/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

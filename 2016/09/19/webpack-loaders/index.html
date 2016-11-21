@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>webpack实践笔记添加loaders | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[源码地址]：( https://github.com/silence717/webpack-practice )本篇文章基于分支step2,切换分支：git checkout step2
+loader加载顺序分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。
+添加es6 loader创建一个es6的文件login.es61234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack实践笔记添加loaders">
+<meta property="og:url" content="https://github.com/silence717/2016/09/19/webpack-loaders/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="[源码地址]：( https://github.com/silence717/webpack-practice )本篇文章基于分支step2,切换分支：git checkout step2
+loader加载顺序分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。
+添加es6 loader创建一个es6的文件login.es61234567891">
+<meta property="og:updated_time" content="2016-11-21T09:21:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack实践笔记添加loaders">
+<meta name="twitter:description" content="[源码地址]：( https://github.com/silence717/webpack-practice )本篇文章基于分支step2,切换分支：git checkout step2
+loader加载顺序分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。
+添加es6 loader创建一个es6的文件login.es61234567891">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-webpack-loaders" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack实践笔记添加loaders
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="源码地址-：-https-github-com-silence717-webpack-practice"><a href="#源码地址-：-https-github-com-silence717-webpack-practice" class="headerlink" title="[源码地址]：( https://github.com/silence717/webpack-practice )"></a>[源码地址]：( <a href="https://github.com/silence717/webpack-practice">https://github.com/silence717/webpack-practice</a> )</h3><p>本篇文章基于分支step2,切换分支：git checkout step2</p>
+<h3 id="loader加载顺序"><a href="#loader加载顺序" class="headerlink" title="loader加载顺序"></a>loader加载顺序</h3><p>分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。</p>
+<h3 id="添加es6-loader"><a href="#添加es6-loader" class="headerlink" title="添加es6 loader"></a>添加es6 loader</h3><h4 id="创建一个es6的文件login-es6"><a href="#创建一个es6的文件login-es6" class="headerlink" title="创建一个es6的文件login.es6"></a>创建一个es6的文件login.es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// login.es6</span></div><div class="line"><span class="keyword">let</span> login = <span class="function">(<span class="params">username, password</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(username !== <span class="string">'admin'</span> || password !== <span class="string">'123'</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'incorrect login'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'correct login'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">login(<span class="string">'admin'</span>, <span class="string">'123'</span>);</div></pre></td></tr></table></figure>
+<p>需要使用es6，由于浏览器支持不够，我们必须使用babel转为es5的code。</p>
+<a id="more"></a>
+<h4 id="安装babel相关的包："><a href="#安装babel相关的包：" class="headerlink" title="安装babel相关的包："></a>安装babel相关的包：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install babel-core babel-loader babel-preset-es2015</div></pre></td></tr></table></figure>
+<h4 id="创建babelrc文件，配置为"><a href="#创建babelrc文件，配置为" class="headerlink" title="创建babelrc文件，配置为:"></a>创建babelrc文件，配置为:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"presets"</span>: [<span class="string">"es2015"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="webpack-config-js中配置loader"><a href="#webpack-config-js中配置loader" class="headerlink" title="webpack-config.js中配置loader"></a>webpack-config.js中配置loader</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">test</span>: <span class="regexp">/\.es6$/</span>,</div><div class="line">            <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">            <span class="attr">loader</span>: <span class="string">'babel-loader'</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;,</div><div class="line"><span class="attr">resolve</span>: &#123;</div><div class="line">    <span class="attr">extensions</span>: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.es6'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行dev-server，看到文件成功执行，这时我们看到bundle.js中编译后的code为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> login = <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">username, password</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (username !== <span class="string">'admin'</span> || password !== <span class="string">'123'</span>) &#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">login(<span class="string">'admin'</span>, <span class="string">'456'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="添加preloader-对js文件进行校验"><a href="#添加preloader-对js文件进行校验" class="headerlink" title="添加preloader,对js文件进行校验"></a>添加preloader,对js文件进行校验</h3><p>我们习惯在项目中使用的是eslint,或者jslint也可以，看个人爱好。</p>
+<h4 id="安装eslint相关包"><a href="#安装eslint相关包" class="headerlink" title="安装eslint相关包"></a>安装eslint相关包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install eslint eslint-loader eslint-plugin-promise eslint-plugin-standard babel-eslint -D</div></pre></td></tr></table></figure>
+<h4 id="创建-eslintrc文件，每个公司采用适合自己的规则。配置文件较大，可查看项目源码。"><a href="#创建-eslintrc文件，每个公司采用适合自己的规则。配置文件较大，可查看项目源码。" class="headerlink" title="创建.eslintrc文件，每个公司采用适合自己的规则。配置文件较大，可查看项目源码。"></a>创建.eslintrc文件，每个公司采用适合自己的规则。配置文件较大，可查看项目源码。</h4><h4 id="webpack-config-js中添加配置-在此我们采用preloader"><a href="#webpack-config-js中添加配置-在此我们采用preloader" class="headerlink" title="webpack-config.js中添加配置,在此我们采用preloader"></a>webpack-config.js中添加配置,在此我们采用preloader</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">preLoaders: [</div><div class="line">    &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">        <span class="attr">exclude</span>: <span class="string">'node_modules'</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'eslint-loader'</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>重新启动，如果code中存在不符合规范的，webpack在编译时候就会出错，根据提示更改对应文件。</p>
+<h3 id="package-json中的scripts"><a href="#package-json中的scripts" class="headerlink" title="package.json中的scripts"></a>package.json中的scripts</h3><p>我不能一直使用这么复杂的命令去启动，so 我们可以在package.json中配置一下scripts：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server"</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样我们每次启动只需要执行 npm start 即可。</p>
+<p>在此说明两点：</p>
+<ul>
+<li>1、 npm的start是一个特殊的脚本名称，在命令行中使用npm start就可以执行相关命令，如果对应的此脚本名称不是start，想要在命令行中运行时，需要这样用npm run {script name}，如npm run dev.</li>
+<li>2、 window环境下不支持&amp;连接命令执行，如：gulp &amp; nodemon mock-server.js。</li>
+</ul>
+<h3 id="production-vs-dev"><a href="#production-vs-dev" class="headerlink" title="production vs dev"></a>production vs dev</h3><p>生产环境我们需要对js进行打包压缩，而dev环境我们希望使用源码便于调试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 生产环境 </div><div class="line">webpack -d</div><div class="line">// 开发环境</div><div class="line">webpack -p</div></pre></td></tr></table></figure></p>
+<p>分别执行这两个命令，你可以看到bundle.js内容是不相同的，一个压缩一个未经压缩。</p>
+<h3 id="为了便于管理，我们创建一个webpack-bulid-config-js文件"><a href="#为了便于管理，我们创建一个webpack-bulid-config-js文件" class="headerlink" title="为了便于管理，我们创建一个webpack-bulid.config.js文件"></a>为了便于管理，我们创建一个webpack-bulid.config.js文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> devConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config'</span>);</div><div class="line"><span class="built_in">module</span>.exports = devConfig;</div></pre></td></tr></table></figure>
+<p>通常在开发环境我们会经常使用console.log,debug来进行代码调试，这些其实是不允许带入生产环境的。<br>尽管采用一系列限制，但是为了防患于未然，我们引入strip-loader包：<br>[传送门]: ( <a href="https://github.com/yahoo/strip-loader">https://github.com/yahoo/strip-loader</a> )</p>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install strip-loader -D</div></pre></td></tr></table></figure>
+<h4 id="webpack-build-config-js配置strip-loader"><a href="#webpack-build-config-js配置strip-loader" class="headerlink" title="webpack-build.config.js配置strip-loader"></a>webpack-build.config.js配置strip-loader</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> WebpackStrip = <span class="built_in">require</span>(<span class="string">'strip-loader'</span>);</div><div class="line"><span class="keyword">var</span> devConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config'</span>);</div><div class="line"><span class="keyword">var</span> stripLoader = &#123;</div><div class="line">    <span class="attr">test</span>: [<span class="regexp">/\.js$/</span>, /\.es6$/],</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: WebpackStrip.loader(<span class="string">'console.log'</span>, <span class="string">'debug'</span>)</div><div class="line">&#125;;</div><div class="line">devConfig.module.loaders.push(stripLoader);</div><div class="line"><span class="built_in">module</span>.exports = devConfig;</div></pre></td></tr></table></figure>
+<h4 id="设置webpack执行的配置文件"><a href="#设置webpack执行的配置文件" class="headerlink" title="设置webpack执行的配置文件"></a>设置webpack执行的配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --config webpack-build.config.js  -p</div></pre></td></tr></table></figure>
+<p>这个命令执行完之后，bundle.js就按照build中的的配置对代码进行了一系列合作。</p>
+<p>说明: webpack –config 用于设置使用哪个配置文件做操作。</p>
+<h3 id="为了便于调试，我们全局安装一个http-server-用于启动我们的项目。"><a href="#为了便于调试，我们全局安装一个http-server-用于启动我们的项目。" class="headerlink" title="为了便于调试，我们全局安装一个http-server,用于启动我们的项目。"></a>为了便于调试，我们全局安装一个http-server,用于启动我们的项目。</h3><h4 id="安装http-server"><a href="#安装http-server" class="headerlink" title="安装http-server"></a>安装http-server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install http-server -g</div></pre></td></tr></table></figure>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http-server</div></pre></td></tr></table></figure>
+<p>打开浏览器访问<a href="http://127.0.0.1:8080/" target="_blank" rel="external">http://127.0.0.1:8080/</a>,<br>此时打开 console，发现并没有任何东西输出，这就是strip-loader的作用。<br>再查看sources中的bundle.js为压缩后的文件。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/19/webpack-loaders/" class="archive-article-date">
+  	<time datetime="2016-09-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-19</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/09/20/webpack-conclusion/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          webpack实践笔记总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/18/webpack-start/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack实践笔记入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="webpack-loaders" data-title="webpack实践笔记添加loaders" data-url="https://github.com/silence717/2016/09/19/webpack-loaders/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

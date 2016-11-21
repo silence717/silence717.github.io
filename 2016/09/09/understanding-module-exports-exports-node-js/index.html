@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>【翻译】understanding-module-exports-exports-node-js | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="理解 node.js 中的 module.exports 与 exports原文链接: https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+作为一个开发者，我们经常会遇到需要使用不熟悉的代码的情况。在这个过程中遇到一个问题：我需要花费多少时间去理解这些代码，明白如何使用?一个典型的回答就是：先让我可以开始c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】understanding-module-exports-exports-node-js">
+<meta property="og:url" content="https://github.com/silence717/2016/09/09/understanding-module-exports-exports-node-js/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="理解 node.js 中的 module.exports 与 exports原文链接: https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+作为一个开发者，我们经常会遇到需要使用不熟悉的代码的情况。在这个过程中遇到一个问题：我需要花费多少时间去理解这些代码，明白如何使用?一个典型的回答就是：先让我可以开始c">
+<meta property="og:updated_time" content="2016-11-21T13:39:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】understanding-module-exports-exports-node-js">
+<meta name="twitter:description" content="理解 node.js 中的 module.exports 与 exports原文链接: https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+作为一个开发者，我们经常会遇到需要使用不熟悉的代码的情况。在这个过程中遇到一个问题：我需要花费多少时间去理解这些代码，明白如何使用?一个典型的回答就是：先让我可以开始c">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-understanding-module-exports-exports-node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【翻译】understanding-module-exports-exports-node-js
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="理解-node-js-中的-module-exports-与-exports"><a href="#理解-node-js-中的-module-exports-与-exports" class="headerlink" title="理解 node.js 中的 module.exports 与 exports"></a>理解 node.js 中的 module.exports 与 exports</h3><p>原文链接: <a href="https://www.sitepoint.com/understanding-module-exports-exports-node-js/" target="_blank" rel="external">https://www.sitepoint.com/understanding-module-exports-exports-node-js/</a></p>
+<p>作为一个开发者，我们经常会遇到需要使用不熟悉的代码的情况。<br>在这个过程中遇到一个问题：我需要花费多少时间去理解这些代码，明白如何使用?<br>一个典型的回答就是：先让我可以开始coding，等到时间允许再去做深入研究。<br>接下来我们将对 module.exports 和 exports 在 node.js中的使用有一个更好地了解。</p>
+<p>Note: 这篇文章包括了 node 中 module 的使用。如果你想了解浏览器内部 modules 的使用，可以参考这面这篇文章：<br><a href="https://www.sitepoint.com/javascript-modules-bundling-transpiling/" target="_blank" rel="external">Understanding JavaScript Modules: Bundling &amp; Transpiling</a></p>
+<a id="more"></a>
+<h4 id="What-is-a-Module？"><a href="#What-is-a-Module？" class="headerlink" title="What is a Module？"></a>What is a Module？</h4><p>一个模块就是将文件中相关的代码封装为一个代码块。<br>创建一个module,可以理解为将所有相关的方法挪到一个文件中。<br>我们使用一个node.js的应用程序来说明一下这个观点。<br>创建一个名叫 greetings.js 的文件，其中包含下面两个方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// greetings.js</span></div><div class="line">sayHelloInEnglish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"Hello"</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">sayHelloInSpanish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"Hola"</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="Exporting-a-Module"><a href="#Exporting-a-Module" class="headerlink" title="Exporting a Module"></a>Exporting a Module</h4><p>为了 greetings.js 公共逻辑增加的时候，其封装的代码可以在其他文件中使用。所以我们<br>重构一下 greetings.js 来达到这个目的。为了更好地理解这个过程，我们分为3步：</p>
+<p>1） 想象一下有这么一行代码在 greetings.js 的第一行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// greetings.js</span></div><div class="line"><span class="keyword">var</span> exports = <span class="built_in">module</span>.exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>2） 把greetings.js中的方法赋值给exports对象在其他文件中使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// greetings.js</span></div><div class="line"><span class="comment">// var exports = module.exports = &#123;&#125;;</span></div><div class="line">        </div><div class="line">exports.sayHelloInEnglish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"HELLO"</span>;</div><div class="line">&#125;;</div><div class="line">   </div><div class="line">exports.sayHelloInSpanish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"Hola"</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在上面的代码中，我们可以使用 module.exports 替换 exports达到相同的结果。<br>这看起来似乎有些困惑，请记住：exports  和 module.exports引用的是同一对象。</p>
+<p>3） 此时 module.exports 是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">sayHelloInEnglish</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"HELLO"</span>;</div><div class="line">  &#125;,</div><div class="line">       </div><div class="line">  <span class="attr">sayHelloInSpanish</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hola"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="Importing-a-Module"><a href="#Importing-a-Module" class="headerlink" title="Importing a Module"></a>Importing a Module</h4><p>我们在 main.js 中 require greetings.js 的公开接口。这个过程有以下三个步骤：</p>
+<p>1）关键词 require 在 node.js 中用于导入模块，即所获取模块的 exports 对象。<br>我们可以想到它是这么定义的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">require</span> = <span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>2) 在 main.js 中 require greetings.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> greetings = <span class="built_in">require</span>(<span class="string">"./greetings.js"</span>);</div></pre></td></tr></table></figure></p>
+<p>上面的代码等同于：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> greetings = &#123;</div><div class="line">  <span class="attr">sayHelloInEnglish</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"HELLO"</span>;</div><div class="line">  &#125;,</div><div class="line">       </div><div class="line">  <span class="attr">sayHelloInSpanish</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hola"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>3) 现在我们可以在 main.js 中使用greetings访问 greetings.js 中公开的方法就像获取它的属性一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> greetings = <span class="built_in">require</span>(<span class="string">"./greetings.js"</span>);</div><div class="line"></div><div class="line"><span class="comment">// "Hello"</span></div><div class="line">greetings.sayHelloInEnglish();</div><div class="line">        </div><div class="line"><span class="comment">// "Hola"  </span></div><div class="line">greetings.sayHelloInSpanish();</div></pre></td></tr></table></figure>
+<h4 id="Salient-Points-重点"><a href="#Salient-Points-重点" class="headerlink" title="Salient Points 重点"></a>Salient Points 重点</h4><p>require 返回一个 object ，该对象引用了 module.exports 的值。<br>如果开发者无意或有意的将 module.exports 赋值给另外一个对象，<br>或者赋予不同的数据结构，这样会导致原来的 module.exports 对象<br>所包含的属性失效。</p>
+<p>看一个复杂的示例去说明这个观点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// greetings.js</span></div><div class="line"><span class="comment">// var exports = module.exports = &#123;&#125;;</span></div><div class="line"></div><div class="line">exports.sayHelloInEnglish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"HELLO"</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">exports.sayHelloInSpanish = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"Hola"</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/* </span></div><div class="line"> * this line of code re-assigns  </div><div class="line"> * module.exports</div><div class="line"> */</div><div class="line"><span class="built_in">module</span>.exports = <span class="string">"Bonjour"</span>;</div></pre></td></tr></table></figure>
+<p>在 main.js 中require greetings.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> greetings = <span class="built_in">require</span>(<span class="string">"./greetings.js"</span>);</div></pre></td></tr></table></figure>
+<p>此时，和之前并没有任何变化。我们将greetings.js中公开的方法<br>赋值给greetings变量。</p>
+<p>当我们试图调用sayHelloInEnglish和sayHelloInSpanish结果显示为<br>module.exports 重新赋值给一个新的不同于默认值的数据格式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="comment">// var greetings = require("./greetings.js");</span></div><div class="line">    </div><div class="line"><span class="comment">/*</span></div><div class="line"> * TypeError: object Bonjour has no </div><div class="line"> * method 'sayHelloInEnglish'</div><div class="line"> */</div><div class="line">greetings.sayHelloInEnglish();</div><div class="line">        </div><div class="line"><span class="comment">/* </span></div><div class="line"> * TypeError: object Bonjour has no </div><div class="line"> * method 'sayHelloInSpanish'</div><div class="line"> */</div><div class="line">greetings.sayHelloInSpanish();</div></pre></td></tr></table></figure>
+<p>为了清楚地知道这个错误原因，我们将greetings的结果打印出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// "Bonjour"</span></div><div class="line"><span class="built_in">console</span>.log(greetings);</div></pre></td></tr></table></figure>
+<p>在这个点上，我们试着在 module.exports 抛出来的字符串”Bonjour” 去调用 sayHelloInEnglish 和 sayHelloInSpanish<br>方法，换句话说，我们永远也不会引用到 module.exports 默认输出object里面的方法。</p>
+<h4 id="Conclusion-总结"><a href="#Conclusion-总结" class="headerlink" title="Conclusion 总结"></a>Conclusion 总结</h4><p>importing 和 exporting 模块在 node.js 中是一个随处可见的任务。<br>我希望 exports 和 module.exports之间的差异更加清晰。<br>此外，如果将来你遇到调用公共方法错误的时候，我希望你可以对这些<br>错误的原因有一个更好地理解。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/09/understanding-module-exports-exports-node-js/" class="archive-article-date">
+  	<time datetime="2016-09-09T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/09/18/webpack-start/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          webpack实践笔记入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/05/angular-apply/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">angular开发过程中遇到的$apply问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="understanding-module-exports-exports-node-js" data-title="【翻译】understanding-module-exports-exports-node-js" data-url="https://github.com/silence717/2016/09/09/understanding-module-exports-exports-node-js/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

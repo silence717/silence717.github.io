@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>javascript中的对象 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一 创建对象：
+
+对象直接量：由若干名/值对组成的映射表，名/值对中间使用冒号分离，明/值对之间用逗号分离，整个映射变使用花括号括起来。举例如下：
+
+123456789var book = &amp;#123;    &quot;main title&quot;: &quot;javascript&quot;,                   // 属性名字里有空格,必须用字符串表示    &quot;sub-title&quot;: &quot;The Definit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript中的对象">
+<meta property="og:url" content="https://github.com/silence717/2016/06/20/javascript-object/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="一 创建对象：
+
+对象直接量：由若干名/值对组成的映射表，名/值对中间使用冒号分离，明/值对之间用逗号分离，整个映射变使用花括号括起来。举例如下：
+
+123456789var book = &amp;#123;    &quot;main title&quot;: &quot;javascript&quot;,                   // 属性名字里有空格,必须用字符串表示    &quot;sub-title&quot;: &quot;The Definit">
+<meta property="og:updated_time" content="2016-11-21T09:26:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript中的对象">
+<meta name="twitter:description" content="一 创建对象：
+
+对象直接量：由若干名/值对组成的映射表，名/值对中间使用冒号分离，明/值对之间用逗号分离，整个映射变使用花括号括起来。举例如下：
+
+123456789var book = &amp;#123;    &quot;main title&quot;: &quot;javascript&quot;,                   // 属性名字里有空格,必须用字符串表示    &quot;sub-title&quot;: &quot;The Definit">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-javascript-object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript中的对象
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一 创建对象：</p>
+<ol>
+<li>对象直接量：由若干名/值对组成的映射表，名/值对中间使用冒号分离，明/值对之间用逗号分离，整个映射变使用花括号括起来。举例如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">    <span class="string">"main title"</span>: <span class="string">"javascript"</span>,                   <span class="comment">// 属性名字里有空格,必须用字符串表示</span></div><div class="line">    <span class="string">"sub-title"</span>: <span class="string">"The Definitive Guide"</span>,          <span class="comment">// 属性名字里连字符,必须使用字符串便是</span></div><div class="line">    <span class="string">"for"</span>: <span class="string">"all audiences"</span>,                       <span class="comment">// "for"是保留字,因此必须用引号</span></div><div class="line">    author: &#123;                                     <span class="comment">// 这里的属性值是一个对象</span></div><div class="line">        firstName: <span class="string">"David"</span>,                       <span class="comment">// 注意,这里的属性名都没有引号</span></div><div class="line">        surname: <span class="string">"Flanagan"</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol>
+<li>通过new创建对象：new运算符创建并初始化一个对象。关键字new后跟随一个函数调用。这里的函数称作构造函数，构造函数用以初始化一个新创建的对象。例如：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();     <span class="comment">// 创建一个空对象,和&#123;&#125;一样</span></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();      <span class="comment">// 创建一个空数组,和[]一样</span></div></pre></td></tr></table></figure>
+<ol>
+<li>原型：每一个javascript对象都和另一个对象关联。<br>没有原型的对象为数不多，Object.prototype就是其中之一。</li>
+<li>Object.create():它创建一个新对象，其中第一个参数是这个对象的原型，第二个可选参数，用以对对象的属性进行进一步描述。例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = <span class="built_in">Object</span>.create(&#123;<span class="attr">x</span>:<span class="number">1</span>, <span class="attr">y</span>:<span class="number">2</span>&#125;);       <span class="comment">// o1继承了属性x和y</span></div><div class="line"><span class="keyword">var</span> o2 = <span class="built_in">Object</span>.create(<span class="literal">null</span>);             <span class="comment">// o2不继承任何属性和方法</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>二 属性的查询和设置</p>
+<pre><code>可以通过点(.)或方括号([])运算符来获取属性的值。运算符左侧应当是一个表达式，它返回一个对象。对于点来说，右侧必须是一个以属性名称命名的简单标识符。对于
+</code></pre><p>方括号来说，方括号内必须是一个计算结果为字符串的表达式，这个字符串就是属性的名字：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> author = book.author;          <span class="comment">// 得到book的"author"属性</span></div><div class="line"><span class="keyword">var</span> name = author.surname;         <span class="comment">// 得到auhor的"surname"属性</span></div></pre></td></tr></table></figure></p>
+<pre><code>和查询属性的写法一样，通过点和方括号也可以创建属性或给属性赋值，但需要将它放在表达式的左侧：
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">book.edition = <span class="number">6</span>;                    <span class="comment">// 给book创建一个名为"edition"的属性</span></div><div class="line">book[<span class="string">"main title"</span>] = <span class="string">"ECMAScript"</span>;   <span class="comment">// 给"main title"属性赋值</span></div></pre></td></tr></table></figure>
+<p> 三 删除属性</p>
+<pre><code>delete运算符可以删除对象的属性。它的操作数应当是一个属性访问表达式。delete只是断开属性和宿主对象的联系，而不会去操作属性中的属性。例如:
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> book.author;                  <span class="comment">// book不再有属性author</span></div></pre></td></tr></table></figure>
+<pre><code>delete运算符只能删除自有属性，不能删除继承属性。
+</code></pre><p> 四 检测属性<br>    javascript对象可以看做属性的集合。需要检测集合中成员的所属关系–判断某个属性是否存在于某个软件中。可以使用in运算符，hasOwnProperty()和propertyIsEnumerable()方法来完成。</p>
+<p> 五 枚举属性<br>    遍历对象属性三种方法：</p>
+<pre><code>* 通常使用for/in循环.
+* Object.keys().
+* Object.getOwnPropertyNames().
+</code></pre><p> 六 属性getter和setter<br>    对象由名字、值和一组特性构成的。属性值可以用一两个方法替代，这两个方法就是getter和setter。由getter和setter定义的属性称作“存储器属性”，<br>    不同于“数据属性”，数据属性只有一个简单的值。</p>
+<p> 七 对象的三个属性</p>
+<pre><code>* 原型属性: 要想检测一个对象是否是另一个对象的原型，请使用isPrototypeof()方法。
+* 类属性: 使用classof()函数可以返回传递给它的任意对象的类。
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">classof</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (o === <span class="literal">null</span> ) <span class="keyword">return</span> <span class="string">"Null"</span>;</div><div class="line">    <span class="keyword">if</span> (o === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="string">"Undefined"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString().call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 八 序列化对象</p>
+<pre><code>对象序列化是指将对象转换为字符串，也可以将字符串还原为对象。
+
+* JSON.Stringify() 序列化对象
+* JSON.parse() 还原js对象
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/06/20/javascript-object/" class="archive-article-date">
+  	<time datetime="2016-06-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-20</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/07/05/angular-apply/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          angular开发过程中遇到的$apply问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/05/javascript-closure/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript中的闭包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript-object" data-title="javascript中的对象" data-url="https://github.com/silence717/2016/06/20/javascript-object/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

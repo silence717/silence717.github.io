@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>【翻译】creating-crud-app-minutes-angulars-resource | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文地址：https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource
+大量的单页应用都有CRUD操作。如果你使用angularjs创建一个CRUD操作，那么你可以利用$resource服务的优势。$resource服务是建立在$http服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】creating-crud-app-minutes-angulars-resource">
+<meta property="og:url" content="https://github.com/silence717/2016/09/28/creating-crud-app-minutes-angulars-resource/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="原文地址：https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource
+大量的单页应用都有CRUD操作。如果你使用angularjs创建一个CRUD操作，那么你可以利用$resource服务的优势。$resource服务是建立在$http服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。">
+<meta property="og:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203305REST_API__1.png">
+<meta property="og:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203349REST_API_2.png">
+<meta property="og:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203432REST_API__3.png">
+<meta property="og:updated_time" content="2016-11-21T13:39:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】creating-crud-app-minutes-angulars-resource">
+<meta name="twitter:description" content="原文地址：https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource
+大量的单页应用都有CRUD操作。如果你使用angularjs创建一个CRUD操作，那么你可以利用$resource服务的优势。$resource服务是建立在$http服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。">
+<meta name="twitter:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203305REST_API__1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-creating-crud-app-minutes-angulars-resource" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【翻译】creating-crud-app-minutes-angulars-resource
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource" target="_blank" rel="external">https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource</a></p>
+<p>大量的单页应用都有CRUD操作。如果你使用<code>angularjs</code>创建一个CRUD操作，那么你可以利用$resource服务的优势。<code>$resource</code>服务是建立在<code>$http</code>服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。所以，我们一起探索一下<code>$resource</code>,并且在<code>angular</code>中实现CRUD的操作。</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p><code>$resource</code>服务没有打包到angularjs中。你需要下载一个独立的文件叫<code>angular-resource.js</code>并且把它引入到HTML页面中。这个文件可以从这里下载：<a href="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js" target="_blank" rel="external">http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js</a>。</p>
+<p>另外，为了使用<code>$resource</code>你需要在主模块中注入<code>ngResource</code>模块。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'mainApp'</span>,[<span class="string">'ngResource'</span>]); <span class="comment">//mainApp is our main module</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p><code>$resource</code>和 RESTful API工作。这意味着你的 URLs 应该类似于下面的模式：</p>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203305REST_API__1.png" alt="图片"></p>
+<p>你可以创建接口使用你选择的服务器端语言。我使用的是Node + Express + MongoDB为这个示例应用设计RESTful接口。创建好了这些URLs以后，你就可以借助于<code>$resource</code>与这些URLs交互。我们来看一下<code>$resource</code>实际上是怎么工作的。</p>
+<h4 id="resource是怎么工作的？"><a href="#resource是怎么工作的？" class="headerlink" title="$resource是怎么工作的？"></a>$resource是怎么工作的？</h4><p>在controller/service中使用<code>$resource</code>需要先声明依赖。接下来就像下面的示例一样，在REST端调用<code>$resource()</code>方法。调用方法之后返回一个<code>$resource</code>一个可用于与REST后端交互的资源类：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApp.services'</span>).factory(<span class="string">'Entry'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> $resource(<span class="string">'/api/entries/:id'</span>); <span class="comment">// Note the full endpoint address</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>方法返回的是一个资源类对象，默认包含下面5种方法：</p>
+<ol>
+<li><code>get()</code></li>
+<li><code>query()</code></li>
+<li><code>save()</code></li>
+<li><code>remove()</code></li>
+<li><code>delete()</code></li>
+</ol>
+<p>下面我们看一下如何在controller中使用<code>get()</code>,<code>query()</code>和<code>save()</code>方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApp.controllers'</span>,[]);</div><div class="line">angular.module(<span class="string">'myApp.controllers'</span>).controller(<span class="string">'ResourceController'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope, Entry</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> entry = Entry.get(&#123; <span class="attr">id</span>: $scope.id &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(entry);</div><div class="line">  &#125;); <span class="comment">// get() 返回单个entry</span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> entries = Entry.query(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(entries);</div><div class="line">  &#125;); <span class="comment">//query() 返回有的entry</span></div><div class="line"></div><div class="line">  $scope.entry = <span class="keyword">new</span> Entry(); <span class="comment">//实例化一个资源类</span></div><div class="line"></div><div class="line">  $scope.entry.data = <span class="string">'some data'</span>;</div><div class="line"></div><div class="line">  Entry.save($scope.entry, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//data saved. do something here.</span></div><div class="line">  &#125;); <span class="comment">//saves an entry. Assuming $scope.entry is the Entry object  </span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在上面的代码片段中 <code>get()</code>方法发起<code>/api/entries/:id</code>的 get 请求。参数<code>:id</code>在被替换为<code>$scope.id</code>。注意<code>get()</code>方法返回一个空对象，当实际数据从服务器返回的时候自动填充到这个空对象。<code>get()</code>方法的第二个参数是回调方法，当服务器端返回数据的时候执行该回调。这是一个非常有用的技巧，因为你可以设置<code>get()</code>返回一个空对象，挂载到<code>$scope</code>，绑定视图。当真实的数据返回且填充到对象，双向数据绑定触发，并且更新视图。</p>
+<p><code>query()</code>方法发起<code>/api/entries</code>(注意这里没有:id)的 get请求 并返回一个空数组。当服务器端返回数据时候填充到该数组。将该数组继续挂在到<code>$scope</code>的模型上，并且在视图上使用<code>ng-repeat</code>绑定。你也可以给<code>query()</code>传递一个回调方法，在数据从服务前端返回的时候执行。</p>
+<p><code>save()</code>方法发起<code>/api/entries</code>的 post 请求， 第一个参数是 post body。第二个参数为回调方法,当数据保存成功后执行。你应该记得<code>$resource()</code>方法返回的是一个资源类。所以，在我们的用例中，我们可以调用<code>new Entry()</code>实例化一个真正的对象，设置若干个属性给它，最后将该对象保存到后端。</p>
+<p>假设你只使用<code>get()</code>和<code>query()</code>在resource类上(在我们的例子中resource类是Entry)。所有非 get 请求的方法，例如<code>save()</code>和<code>delete()</code>在<code>new Entry()</code>实例中都能用(在这里称为<code>$resource</code>实例)。不同的是这些方法都以<code>$</code>的开头。所以这些有用的方法为：</p>
+<ol>
+<li><code>$save()</code></li>
+<li><code>$delete()</code></li>
+<li><code>$remove</code></li>
+</ol>
+<p>例如，<code>$save()</code>方法像下面一样使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$scope.entry = <span class="keyword">new</span> Entry(); <span class="comment">//这个对象有个$save()方法</span></div><div class="line">$scope.entry.$save(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//$scope.entry序列化为json作为post body 发送</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>我们已经实践CRUD中的了增加，查找和删除，剩下的最后一个修改。为了支持修改操作，我们需要像下面这样修改我们的<code>Entry</code>factory：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApp.services'</span>).factory(<span class="string">'Entry'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> $resource(<span class="string">'/api/entries/:id'</span>, &#123; <span class="attr">id</span>: <span class="string">'@_id'</span> &#125;, &#123;</div><div class="line">    <span class="attr">update</span>: &#123;</div><div class="line">      <span class="attr">method</span>: <span class="string">'PUT'</span> <span class="comment">// this method issues a PUT request</span></div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><code>$resource</code>的第二个 argument 明确标识需要url中<code>:id</code>参数的值是什么。这里将其设置为<code>@_id</code>，这意味着在<code>$resource</code>的实例中不管什么时候调用方法例如<code>$update()</code>和<code>$delete()</code>，<code>:id</code>的都会被设置为实例中<code>_id</code>的属性值。这个是为 PUT 和 DELETE 请求使用的。注意第三个 argument，它允许我们给资源类添加自定义方法。如果该方法是一个非 get 请求，在<code>$resource</code>会有一个以<code>$</code>的同名方法。我们看一下如何使用<code>$update</code>方法。假设我们在controller中使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$scope.entry = Movie.get(&#123; <span class="attr">id</span>: $scope.id &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// $scope.entry 是</span></div><div class="line">    $scope.entry.data = <span class="string">'something else'</span>;</div><div class="line">  $scope.entry.$update(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//updated in the backend</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>当<code>$update()</code>方法调用的时候，过程如下：</p>
+<ol>
+<li>Angularjs 知道<code>$update()</code>方法会触发 URL 为<code>/api/entries/:id</code>的 PUT 请求。</li>
+<li>读取<code>$scope.entry._id</code>值，将此值赋给<code>:id</code>并且生成 URL。</li>
+<li>发起一个请求体为 <code>$scope.entity</code>的 PUT 请求。</li>
+</ol>
+<p>同样，如果你想删除一个entry可以像下面这么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$scope.entry = Movie.get(&#123; <span class="attr">id</span>: $scope.id &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// $scope.entry 是服务器端返回来的，是一个 Entry 的实例</span></div><div class="line">  $scope.entry.data = <span class="string">'something else'</span>;</div><div class="line">  $scope.entry.$<span class="keyword">delete</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//gone forever!</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>它和 update 有着同样的步骤，只是使用 DELETE 替换了 PUT请求类型。</p>
+<p>我们已经覆盖了CRUD的所有操作，但是还有一小点。<code>$resource</code>方法还有第4个可选择的参数。这是一个自定义设置的值。目前只有一个 <code>stripTrailingSlashes</code>可以设置。它的默认值是false,这意味着它会自动删除 URL 的最后一个 /,如果你不需要可以像下面这么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApp.services'</span>).factory(<span class="string">'Entry'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> $resource(<span class="string">'/api/entries/:id'</span>, &#123; <span class="attr">id</span>: <span class="string">'@_id'</span> &#125;, &#123;</div><div class="line">    <span class="attr">update</span>: &#123;</div><div class="line">      <span class="attr">method</span>: <span class="string">'PUT'</span> <span class="comment">// this method issues a PUT request</span></div><div class="line">    &#125;</div><div class="line">  &#125;, &#123;</div><div class="line">    <span class="attr">stripTrailingSlashes</span>: <span class="literal">false</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>顺便说一句，我没有覆盖<code>$resource</code>相关的每一个东西。我们这里介绍的是最基本的，这将帮助您很快的开始一个应用的 CRUD。如果你仔细研究<code>$resource</code>，你可以阅读这篇<a href="https://docs.angularjs.org/api/ngResource/service/$resource" target="_blank" rel="external">文章</a>。</p>
+<h3 id="创建一个Movie的应用"><a href="#创建一个Movie的应用" class="headerlink" title="创建一个Movie的应用"></a>创建一个Movie的应用</h3><p>为了加强<code>$resource</code>的概念我们为电影爱好者创建一个应用。这是一个单页应用，用户可以新增一个电影，修改一个已存在的，最后还可以删除。我们将使用<code>$resource</code>与后端 REST API 进行交互。你可以查看这个在线例子，我们将它部署在<a href="http://movieapp-sitepointdemos.rhcloud.com" target="_blank" rel="external">这里</a>。</p>
+<p>注意API允许CROS访问（跨域资源共享）,所以你可以创建一个独立的 Angular 应用，可以使用 <a href="http://movieapp-sitepointdemos.rhcloud.com/" target="_blank" rel="external">http://movieapp-sitepointdemos.rhcloud.com/</a> 地址为API。你可以开发 Angular 应用不用担心没有后端服务。</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><p>我已经使用 Node 和 Express创建了一个 RESTful 后端服务。看下面的截图认识一下API接口：<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203349REST_API_2.png" alt="图片"></p>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>我们的 AngularJS 应用采用下面的目录结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">movieApp</div><div class="line">  /css</div><div class="line">    bootstrap.css</div><div class="line">    app.css</div><div class="line">  /js</div><div class="line">    app.js</div><div class="line">    controllers.js</div><div class="line">    services.js</div><div class="line">  /lib</div><div class="line">    angular.min.js</div><div class="line">    angular-resource.min.js</div><div class="line">    angular-ui-router.min.js</div><div class="line">  /partials</div><div class="line">    _form.html</div><div class="line">    movie-add.html</div><div class="line">    movie-edit.html</div><div class="line">    movie-view.html</div><div class="line">    movies.html</div><div class="line">  index.html</div></pre></td></tr></table></figure></p>
+<p>注意到我们的路由使用<a href="https://github.com/angular-ui/ui-router">Angular UI Router</a>实现</p>
+<h4 id="创建-service-与REST后端交互"><a href="#创建-service-与REST后端交互" class="headerlink" title="创建 service 与REST后端交互"></a>创建 service 与REST后端交互</h4><p>像上面部分讨论的一样，我们创建一个标准的 service 使用<code>$resource</code>与后端 REST API 交互。这个服务定义在<code>js/services.js</code>中。</p>
+<p><code>services.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'movieApp.services'</span>, []).factory(<span class="string">'Movie'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> $resource(<span class="string">'http://movieapp-sitepointdemos.rhcloud.com/api/movies/:id'</span>, &#123; <span class="attr">id</span>: <span class="string">'@_id'</span> &#125;, &#123;</div><div class="line">    <span class="attr">update</span>: &#123;</div><div class="line">      <span class="attr">method</span>: <span class="string">'PUT'</span></div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个 factory 的名字是 Movie. 我们使用的是 MongoDB,每个 movie 实例都有一个<code>_id</code>的属性。rest是简单而直接的。</p>
+<p>现在我们已经开发好了 service,我们接下来开发 views 和 controllers。</p>
+<h4 id="index-html-创建应用的入口页面"><a href="#index-html-创建应用的入口页面" class="headerlink" title="index.html:创建应用的入口页面"></a><code>index.html</code>:创建应用的入口页面</h4><p><code>index.html</code>是我们应用的入口。我们需要将所有依赖的 scripts 和 css全部引入到页面。我们使用 Bootstrap 来快速的开始布局。下面是<code>index.html</code>的内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">html</span> <span class="attr">data-ng-app</span>=<span class="string">"movieApp"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"/"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>The Movie App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"css/bootstrap.min.css"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"css/app.css"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">ui-sref</span>=<span class="string">"movies"</span>&gt;</span>The Movie App<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">ui-sref</span>=<span class="string">"movies"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row top-buffer"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-8 col-xs-offset-2"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">ui-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- This is where our views will load --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"lib/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/controllers.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/services.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"lib/angular-ui-router.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"lib/angular-resource.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>标签没什么特别需要说明的。需要注意的是<code>&lt;div ui-view&gt;&lt;/div&gt;</code>,<code>ui-view</code>指令来源于 <code>UI Router</code>模块，并且作为我们视图的容器。</p>
+<h4 id="创建主-Module-和-States"><a href="#创建主-Module-和-States" class="headerlink" title="创建主 Module 和 States"></a>创建主 Module 和 States</h4><p>我们主module和 states定义在<code>js/app.js</code>中：</p>
+<p><code>app.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'movieApp'</span>, [<span class="string">'ui.router'</span>, <span class="string">'ngResource'</span>, <span class="string">'movieApp.controllers'</span>, <span class="string">'movieApp.services'</span>]);</div><div class="line">angular.module(<span class="string">'movieApp'</span>).config(<span class="function"><span class="keyword">function</span>(<span class="params">$stateProvider</span>) </span>&#123;</div><div class="line">  $stateProvider.state(<span class="string">'movies'</span>, &#123; <span class="comment">// 展示所有movie路由</span></div><div class="line">    url: <span class="string">'/movies'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'partials/movies.html'</span>,</div><div class="line">    <span class="attr">controller</span>: <span class="string">'MovieListController'</span></div><div class="line">  &#125;).state(<span class="string">'viewMovie'</span>, &#123; <span class="comment">//展示单个 movie 路由</span></div><div class="line">    url: <span class="string">'/movies/:id/view'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'partials/movie-view.html'</span>,</div><div class="line">    <span class="attr">controller</span>: <span class="string">'MovieViewController'</span></div><div class="line">  &#125;).state(<span class="string">'newMovie'</span>, &#123; <span class="comment">//添加一个新 movie 路由</span></div><div class="line">    url: <span class="string">'/movies/new'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'partials/movie-add.html'</span>,</div><div class="line">    <span class="attr">controller</span>: <span class="string">'MovieCreateController'</span></div><div class="line">  &#125;).state(<span class="string">'editMovie'</span>, &#123; <span class="comment">//修改一个movie路由</span></div><div class="line">    url: <span class="string">'/movies/:id/edit'</span>,</div><div class="line">    <span class="attr">templateUrl</span>: <span class="string">'partials/movie-edit.html'</span>,</div><div class="line">    <span class="attr">controller</span>: <span class="string">'MovieEditController'</span></div><div class="line">  &#125;);</div><div class="line">&#125;).run(<span class="function"><span class="keyword">function</span>(<span class="params">$state</span>) </span>&#123;</div><div class="line">  $state.go(<span class="string">'movies'</span>); <span class="comment">//当程序启动时候默认跳转路由</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>所以，我们的应用有以下4种状态：</p>
+<ol>
+<li><code>movies</code></li>
+<li><code>viewMovie</code></li>
+<li><code>newMovie</code></li>
+<li><code>editMovie</code></li>
+</ol>
+<p>每一个state由<code>url</code>,<code>templateUrl</code>和<code>controller</code>组成。注意到当主模块加载的时候路由转向 <code>movies</code>去展示我们系统中所有的movies。下面的截图看一看出每个路由对应的url是什么。<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/06/1402203432REST_API__3.png" alt="图片"></p>
+<h4 id="创建模板"><a href="#创建模板" class="headerlink" title="创建模板"></a>创建模板</h4><p>所有的模板都在<code>partials</code>目录下，我们挨个来看一下他们的内容。</p>
+<h5 id="form-html"><a href="#form-html" class="headerlink" title="_form.html:"></a><code>_form.html</code>:</h5><p><code>_form.html</code>是一个让用户录入数据的的简单表单。注意到这个表单会被<code>movie-add.html</code>和<code>movie-edit.html</code>引入，因为它们都需要用户输入。</p>
+<p>下面是<code>_form.html</code>的内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"title"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"movie.title"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"title"</span> <span class="attr">placeholder</span>=<span class="string">"Movie Title Here"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"year"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Release Year<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"movie.releaseYear"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"year"</span> <span class="attr">placeholder</span>=<span class="string">"When was the movie released?"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"director"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Director<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"movie.director"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"director"</span> <span class="attr">placeholder</span>=<span class="string">"Who directed the movie?"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"plot"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Movie Genre<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"movie.genre"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"plot"</span> <span class="attr">placeholder</span>=<span class="string">"Movie genre here"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-offset-2 col-sm-10"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">value</span>=<span class="string">"Save"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>模板中使用<code>ng-model</code>绑定不同的movie变量属性到不同的scope的movie模型。</p>
+<h5 id="movie-add-html"><a href="#movie-add-html" class="headerlink" title="movie-add.html:"></a><code>movie-add.html</code>:</h5><p>这个模板接收用户输入并且在我们的系统中保存一个新的movie，下面是具体内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">ng-submit</span>=<span class="string">"addMovie()"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-include</span>=<span class="string">"'partials/_form.html'"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>当表单提交的时候，会触发scope 的 <code>addMovie()</code>方法向后端发送一个创建movie的POST请求。</p>
+<h5 id="movie-edit-html"><a href="#movie-edit-html" class="headerlink" title="movie-edit.html:"></a><code>movie-edit.html</code>:</h5><p>这个模板用于接收用户收入，并且修改系统在已存在的一个movie。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">ng-submit</span>=<span class="string">"updateMovie()"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-include</span>=<span class="string">"'partials/_form.html'"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这个表单一旦提交，就会触发scope的 <code>updateMovie()</code>方法像向后端发送一个 PUT 请求去修改movie信息。</p>
+<h5 id="movie-view-html"><a href="#movie-view-html" class="headerlink" title="movie-view.html::"></a><code>movie-view.html:</code>:</h5><p>这个模板用于展示一个movie的详细信息。内容如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table movietable"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Details for &#123;&#123;movie.title&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Movie Title<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie.title&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Director<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie.director&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Release Year<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie.releaseYear&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>Movie Genre<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie.genre&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">ui-sref</span>=<span class="string">"editMovie(&#123;id:movie._id&#125;)"</span>&gt;</span>Edit<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>模板最后是一个编辑按钮。点击按钮路由会转向编辑状态，并且当前编辑的movie id 会包含在<code>$stateParams</code>中。</p>
+<h5 id="movies-html"><a href="#movies-html" class="headerlink" title="movies.html:"></a><code>movies.html</code>:</h5><p>这个模板用于展示系统中所有的 movie。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">ui-sref</span>=<span class="string">"newMovie"</span> <span class="attr">class</span>=<span class="string">"btn-primary btn-lg nodecoration"</span>&gt;</span>Add New Movie<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table movietable"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span>&gt;</span>All Movies<span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"movie in movies"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie.title&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">ui-sref</span>=<span class="string">"viewMovie(&#123;id:movie._id&#125;)"</span>&gt;</span>View<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span>  <span class="attr">ng-click</span>=<span class="string">"deleteMovie(movie)"</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>通过循环展示后端返回的每个movie对象的详细详细。这个也有一个添加按钮可以将路由转向添加状态，触发它可以转向一个新的页面并且添加一个新的movie。</p>
+<p>在每个movie后面都有两个操作按钮，分别是查看和删除。查看可以转向movie的详细信息页面。删除会将movie永久的删除掉。</p>
+<h4 id="创建controllers"><a href="#创建controllers" class="headerlink" title="创建controllers"></a>创建controllers</h4><p>每一个路由都对应一个controller。所以，我们总共有4个controller对应4个路由。所有的controller都在<code>js/controllers.js</code>中。所有的controllers都是调用我们上面讨论的Movie service服务。下面看一下controllers如何调用：</p>
+<p><code>controllers.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'movieApp.controllers'</span>, []).controller(<span class="string">'MovieListController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $state, popupService, $window, Movie</span>) </span>&#123;</div><div class="line">  $scope.movies = Movie.query(); <span class="comment">//fetch all movies. Issues a GET to /api/movies</span></div><div class="line"></div><div class="line">  $scope.deleteMovie = <span class="function"><span class="keyword">function</span>(<span class="params">movie</span>) </span>&#123; <span class="comment">// Delete a movie. Issues a DELETE to /api/movies/:id</span></div><div class="line">    <span class="keyword">if</span> (popupService.showPopup(<span class="string">'Really delete this?'</span>)) &#123;</div><div class="line">      movie.$<span class="keyword">delete</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        $<span class="built_in">window</span>.location.href = <span class="string">''</span>; <span class="comment">//redirect to home</span></div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;).controller(<span class="string">'MovieViewController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $stateParams, Movie</span>) </span>&#123;</div><div class="line">  $scope.movie = Movie.get(&#123; <span class="attr">id</span>: $stateParams.id &#125;); <span class="comment">//Get a single movie.Issues a GET to /api/movies/:id</span></div><div class="line">&#125;).controller(<span class="string">'MovieCreateController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $state, $stateParams, Movie</span>) </span>&#123;</div><div class="line">  $scope.movie = <span class="keyword">new</span> Movie();  <span class="comment">//create new movie instance. Properties will be set via ng-model on UI</span></div><div class="line"></div><div class="line">  $scope.addMovie = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//create a new movie. Issues a POST to /api/movies</span></div><div class="line">    $scope.movie.$save(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      $state.go(<span class="string">'movies'</span>); <span class="comment">// on success go back to home i.e. movies state.</span></div><div class="line">    &#125;);</div><div class="line">  &#125;;</div><div class="line">&#125;).controller(<span class="string">'MovieEditController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $state, $stateParams, Movie</span>) </span>&#123;</div><div class="line">  $scope.updateMovie = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//Update the edited movie. Issues a PUT to /api/movies/:id</span></div><div class="line">    $scope.movie.$update(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      $state.go(<span class="string">'movies'</span>); <span class="comment">// on success go back to home i.e. movies state.</span></div><div class="line">    &#125;);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  $scope.loadMovie = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//Issues a GET request to /api/movies/:id to get a movie to update</span></div><div class="line">    $scope.movie = Movie.get(&#123; <span class="attr">id</span>: $stateParams.id &#125;);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  $scope.loadMovie(); <span class="comment">// Load a movie which can be edited on UI</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>假设应用部署在<code>localhost/movieApp</code>,你可以通过<code>http://localhost/movieApp/index.html</code>访问。如果你是一个电影爱好者，你也可以在里面添加你喜爱的电影。部署和这篇文章中用到的源码可以在GitHub进行下载。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/28/creating-crud-app-minutes-angulars-resource/" class="archive-article-date">
+  	<time datetime="2016-09-28T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-28</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-resource/">angular-resource</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/08/study-materials-collection/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          学习资料网址收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/20/webpack-conclusion/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack实践笔记总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="creating-crud-app-minutes-angulars-resource" data-title="【翻译】creating-crud-app-minutes-angulars-resource" data-url="https://github.com/silence717/2016/09/28/creating-crud-app-minutes-angulars-resource/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

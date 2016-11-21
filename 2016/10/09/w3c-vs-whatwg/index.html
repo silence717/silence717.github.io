@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>【翻译】W3C vs. WhatWG HTML5 标准-差异记录 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文地址：http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/**
+
+几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了5个有趣但现在过时的功能 。问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】W3C vs. WhatWG HTML5 标准-差异记录">
+<meta property="og:url" content="https://github.com/silence717/2016/10/09/w3c-vs-whatwg/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="原文地址：http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/**
+
+几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了5个有趣但现在过时的功能 。问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相">
+<meta property="og:updated_time" content="2016-11-21T13:40:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】W3C vs. WhatWG HTML5 标准-差异记录">
+<meta name="twitter:description" content="原文地址：http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/**
+
+几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了5个有趣但现在过时的功能 。问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-w3c-vs-whatwg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【翻译】W3C vs. WhatWG HTML5 标准-差异记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>原文地址：<a href="http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/" target="_blank" rel="external">http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/</a>**</p>
+</blockquote>
+<p>几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了<a href="http://www.sitepoint.com/5-obsolete-features-html5/" target="_blank" rel="external">5个有趣但现在过时的功能</a> 。<br>问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相同标记语言的两种不同风格之间进行选择：W3C开发的规范和WHATWG开发的规范。</p>
+<blockquote>
+<p>译者注：WHATWG：Web Hypertext Application Technology Working Group，网页超文本应用技术工作小组，是一个以推动网络标准为目的而成立的组织。（为了准确，后面不做翻译）</p>
+</blockquote>
+<p>就大部分而言，这些规范都是相同或者说非常相似的，但是几年过去之后，越来越多的差异出现。你会关心他们吗？在大多数情况下不会，因为它对你和你的项目差异很小，或者浏览器供应商会支持这两个标准。然而，在短期内，那些影响已给定功能实现的差异可能对你比较重要。每个浏览器供应商遵循规范都有自己的需求。例如<a href="https://groups.google.com/forum/#!msg/mozilla.dev.platform/BnY1261cNJo/MdkaT_EX6M0J" target="_blank" rel="external">来自于Mozilla的David Baron目前声明</a>：</p>
+<blockquote>
+<p>当W3C和WHATWG的HTML标准不同时，我们倾向于遵循WHATWG标准。</p>
+</blockquote>
+<p>在这篇文章里，我们将解决W3C和WHATWG标准之间的一些差异，在每个部分的结尾我会给出我对差异的看法。这并不是一个全面的列表，但是足够让你在这个问题有自己的观点。</p>
+<a id="more"></a>
+<h2 id="“HTML5”-vs-“HTML-现存标准”"><a href="#“HTML5”-vs-“HTML-现存标准”" class="headerlink" title="“HTML5” vs “HTML 现存标准”"></a>“HTML5” vs “HTML 现存标准”</h2><p>我们以一个简单的主题来开始讨论差异：标准的名称。<a href="http://www.whatwg.org/html/" target="_blank" rel="external">WHATWG标准的版本</a>去掉了名字后面的”5”<a href="https://blog.whatwg.org/html-is-the-new-html5" target="_blank" rel="external">在2011年初更名为”HTML”</a>。然后，又改名为”HTML 现存标准”来指定它将不断发展和不再支持使用版本号引用。</p>
+<p>相反地，<a href="http://www.w3.org/TR/html5/" target="_blank" rel="external">W3C标准</a>继续使用数字，正如介绍中提到的一样，最后一个稳定版本是5，例如HTML5。作为这一步的结果，该组织正在积极开发的标准被称为HTML5.1新版本。在HTML5.1里，一些HTML5里面的元素和属性将不会再有，例如正在讨论的<code>dailog</code>元素，<code>month</code>和<code>week</code>类型的<code>input</code>。</p>
+<h3 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h3><p>我认为现在和2000年之前的世界变化太大了，因为技术以一个疯狂的速度发展着，尤其在web端。所以，删除版本号使其具有连续性听起来是比较合理地。然而，不是所有的浏览器都会自动更新或者以同样的速度发布(常用的术语是一个<em><em>evergreen browser</em></em>),所以将一组功能放到一个或者多个浏览器版本是有道理的。</p>
+<p>我的观点是，有一个版本可以供开发人员参考并做出更好的计划，直到每一个浏览器都采用这一策略的快速发布和自动更新。不是因为，为了使用一些的功能去开发网站而需要检测浏览器的版本（你真的需要使用该功能检测），而是因为，我们可以获得其统计数据使用一个特定版本的浏览器。使用这些统计数据，在合适的时间你可以采用一些功能在你的项目中。<br>polyfills 和 shims可以帮助你实现，但是把它们加到你的网站中你需要考虑权重？</p>
+<h2 id="main-元素"><a href="#main-元素" class="headerlink" title="main 元素"></a><code>main</code> 元素</h2><p><code>main</code>元素是最新增加标准中的其中一个，不同的标准对于它有不同的定义。W3C标准定义为页面的主要内容 - 内容是一个页面的主要主题或者一个应用的核心功能。标准还定义一个文档中不能出现一个以上的<code>main</code>元素，并且<code>main</code>元素需要搭配<code>role=&quot;main&quot;</code>或者其他等效性的APIS。</p>
+<p>根据这个标准的一个简单的例子如下所示：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is the content of this section<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">            The author of this content is Aurelio De Rosa</div><div class="line">         <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">small</span>&gt;</span>Copyright © Aurelio De Rosa 2014<span class="tag">&lt;/<span class="name">small</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>WHATWG标准不给<code>main</code>元素分配任何语义值，它定义为其他元素主导内容的容器。如果你坚持WHATWG标准，它没有限制你使用<code>main</code>元素的次数。因此如果你在一个页面中有多个<code>article</code>元素，你需要使用<code>main</code>元素标记每个<code>article</code>的的内容。</p>
+<p>使用基于WHATWG标准的一个例子是：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is the content of this section<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">            The author of this content is Aurelio De Rosa</div><div class="line">         <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">small</span>&gt;</span>Copyright © Aurelio De Rosa 2014<span class="tag">&lt;/<span class="name">small</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>请注意，在上面的代码中，我使用了两次<code>main</code>元素。</p>
+<h3 id="观点-1"><a href="#观点-1" class="headerlink" title="观点"></a>观点</h3><p>关于<code>main</code>元素，我与W3C看法一致，因为我质疑在一个文档中有多个主要区域的需求。此外，我记得 Steve Faulkner（W3C的标准的编辑）多次敦促 Ian Hickson（WHATWG标准的编辑）在WHATWG邮件中提供能够证明需要多个主要区域的数据。结论是，在所有的场合WHATWG编辑提供这些数据失败。</p>
+<h2 id="hgroup-元素"><a href="#hgroup-元素" class="headerlink" title="hgroup 元素"></a><code>hgroup</code> 元素</h2><p><code>hgroup</code>元素用于组合一个或多个<code>h1</code>-<code>h6</code>的元素集合，对组织一个部分的标题和相应的子标题十分有用。</p>
+<p>引入此元素以便于创建子标题，并解决文档轮廓算法的重要问题。实际上，将多个标题元素放在<code>hgroup</code>中，想象文档大纲应该是包含所有标题，但从最终的结果中看出只有最高级别的标题元素。</p>
+<p>一个使用它的例子，来源于我的文章<a href="http://www.sitepoint.com/5-obsolete-features-html5/" target="_blank" rel="external">HTML5中5个过时的功能</a>，如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>5 deprecated features of HTML5<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Sometimes specifications are changed</div><div class="line">      and you need to refactor your code<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>In this article we'll discuss...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2013年4月由于缺乏实现，用例不足和促进标记反面模式而从W3C标准删除。相反地，WHATWG标准还包括<code>ghroup</code>。</p>
+<h3 id="观点-2"><a href="#观点-2" class="headerlink" title="观点"></a>观点</h3><p>正如引用文章中所说，我一直是这个元素的粉丝但是我弃用了它。第一个原因是，我是W3C标准的一个追随者。第二个原因是，我注意到对这个缺乏兴趣和在浏览器中实现。</p>
+<h2 id="Web-Notifications-API"><a href="#Web-Notifications-API" class="headerlink" title="Web Notifications API"></a>Web Notifications API</h2><p>Web Notifications API定义是为终端用户提供通知的一个API。一个允许提示用户当前网页之外的通知，例如电子邮件传送。每当用户收到了一封新的电子邮件都需要通知用户或者有意见事情需要他们关注。一些具体的例子是如果有人在twitter发文，或者发了一张照片在Facebook或Google+。</p>
+<p>使用此API的简单例子如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Notification.requestPermission(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> notification = <span class="keyword">new</span> Notification(<span class="string">'Email received'</span>, &#123;</div><div class="line">      <span class="attr">body</span>: <span class="string">'You have a total of 3 unread emails'</span></div><div class="line">   &#125;);</div><div class="line"></div><div class="line">   notification.onshow = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'Notification shown'</span>);</div><div class="line">   &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Web Notifications API在<a href="http://www.w3.org/TR/notifications/" target="_blank" rel="external">W3C标准</a>和<a href="https://notifications.spec.whatwg.org/" target="_blank" rel="external">WHATWG标准</a>都有明确的规定，两个版本之间有一些差异。特别地，WHATWG标准去掉了<code>onclose</code>和<code>onshow</code>事件。因此，W3C标准定义了4个事件(<code>onclick</code>, <code>onclose</code>, <code>onerror</code>, 和<code>onshow</code>)，WHATWG标准只定义了两个(<code>onclick</code> 和 <code>onerror</code>)。</p>
+<p>如果你想了解更多API的不同版本和主要浏览器的支持，你可以看看我的这篇文章<a href="http://aurelio.audero.it/blog/2014/10/18/state-web-notifications-api/" target="_blank" rel="external">Web Notifications API的状态</a>。</p>
+<h3 id="观点-3"><a href="#观点-3" class="headerlink" title="观点"></a>观点</h3><p>标准之间没有太大的差异，但是它会影响你执行某些任务的方法。在这种情况下，我遵循W3C标准，我考虑的当我触发关闭事件的需要做执行某些操作，但是WHATWG不可能。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在本文中我们讨论了一些W3C与WHATWG标准之间最重要的差异。正如你看到的，考虑到标准中定义的元素和APIS的数量，还是没有太多的差异。有了这一想法，就不会担心未来，因为我相信标准最后都会和现实需求匹配，这意味着，不管哪个组织开始一个新的功能都会有明确的规定，开发者和浏览器供应商都有权利去使用成功的一个或另一个版本。因此，浏览器供应商和开发者是决定哪个标准”成功”实施或者弃用他们的主导者。正因为如此，对于每一个讨论的功能，最终都会该表标准以符合现实需求。</p>
+<p>最后一点，如果你想发现更多的差异，你可以看W3C的这篇文章 <a href="http://www.w3.org/wiki/HTML/W3C-WHATWG-Differences" target="_blank" rel="external">W3C HTML5.1标准与WHATWG LS的不同</a>。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/09/w3c-vs-whatwg/" class="archive-article-date">
+  	<time datetime="2016-10-09T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/10/qinghaihu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          青海湖20160805-20160808
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/08/study-materials-collection/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习资料网址收集</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="w3c-vs-whatwg" data-title="【翻译】W3C vs. WhatWG HTML5 标准-差异记录" data-url="https://github.com/silence717/2016/10/09/w3c-vs-whatwg/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

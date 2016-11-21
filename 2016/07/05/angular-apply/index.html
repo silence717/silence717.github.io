@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>angular开发过程中遇到的$apply问题 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于一直在项目上并没有使用过angular进行开发，目前会遇到一些比较弱智的问题，所以每次遇到耗时较多的问题都总结一下。
+$apply问题接到一个类似于dropdown这样的需求，点击按钮下拉选择展示，而它的关闭有3中场景。
+
+目前处于展开状态，再次点击按钮，下拉隐藏。
+点击里面的任一条件，下拉隐藏。
+点击空白处，下拉隐藏。
+
+相信这样的使用场景一定不陌生，因为他经常出现。
+一开始的时候想象了一下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular开发过程中遇到的$apply问题">
+<meta property="og:url" content="https://github.com/silence717/2016/07/05/angular-apply/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="由于一直在项目上并没有使用过angular进行开发，目前会遇到一些比较弱智的问题，所以每次遇到耗时较多的问题都总结一下。
+$apply问题接到一个类似于dropdown这样的需求，点击按钮下拉选择展示，而它的关闭有3中场景。
+
+目前处于展开状态，再次点击按钮，下拉隐藏。
+点击里面的任一条件，下拉隐藏。
+点击空白处，下拉隐藏。
+
+相信这样的使用场景一定不陌生，因为他经常出现。
+一开始的时候想象了一下">
+<meta property="og:updated_time" content="2016-11-21T09:33:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular开发过程中遇到的$apply问题">
+<meta name="twitter:description" content="由于一直在项目上并没有使用过angular进行开发，目前会遇到一些比较弱智的问题，所以每次遇到耗时较多的问题都总结一下。
+$apply问题接到一个类似于dropdown这样的需求，点击按钮下拉选择展示，而它的关闭有3中场景。
+
+目前处于展开状态，再次点击按钮，下拉隐藏。
+点击里面的任一条件，下拉隐藏。
+点击空白处，下拉隐藏。
+
+相信这样的使用场景一定不陌生，因为他经常出现。
+一开始的时候想象了一下">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-angular-apply" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      angular开发过程中遇到的$apply问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于一直在项目上并没有使用过angular进行开发，目前会遇到一些比较弱智的问题，所以每次遇到耗时较多的问题都总结一下。</p>
+<h4 id="apply问题"><a href="#apply问题" class="headerlink" title="$apply问题"></a>$apply问题</h4><p>接到一个类似于dropdown这样的需求，点击按钮下拉选择展示，而它的关闭有3中场景。</p>
+<ol>
+<li>目前处于展开状态，再次点击按钮，下拉隐藏。</li>
+<li>点击里面的任一条件，下拉隐藏。</li>
+<li>点击空白处，下拉隐藏。</li>
+</ol>
+<p>相信这样的使用场景一定不陌生，因为他经常出现。</p>
+<h4 id="一开始的时候想象了一下jquery多么美好，实现起来多么简单，其实angular也很容易。"><a href="#一开始的时候想象了一下jquery多么美好，实现起来多么简单，其实angular也很容易。" class="headerlink" title="一开始的时候想象了一下jquery多么美好，实现起来多么简单，其实angular也很容易。"></a>一开始的时候想象了一下jquery多么美好，实现起来多么简单，其实angular也很容易。</h4><p>思路解析：</p>
+<p>外层设置一个状态值，通过添加ngClass控制下拉是否显示。设想都是美好的，也通过测试这样没有问题。</p>
+<p>实现过程：</p>
+<p>1.html书写<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span> <span class="attr">ng-class</span>=<span class="string">"&#123;'open': vm.open&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"show"</span> <span class="attr">ng-click</span>=<span class="string">"vm.toggle()"</span>&gt;</span>cilic me!<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span> <span class="attr">ng-repeat</span>=<span class="string">"item in list"</span> <span class="attr">ng-click</span>=<span class="string">"vm.itemClick();"</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>2.css代码控制<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.content</span> <span class="selector-class">.list</span>&#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">&#125;  </div><div class="line"><span class="selector-class">.content</span><span class="selector-class">.open</span> <span class="selector-class">.list</span>&#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.mock静态数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vm.list = [</div><div class="line">    &#123;<span class="attr">title</span>: <span class="string">'下拉选项1'</span>&#125;,</div><div class="line">    &#123;<span class="attr">title</span>: <span class="string">'下拉选项2'</span>&#125;,</div><div class="line">    &#123;<span class="attr">title</span>: <span class="string">'下拉选项3'</span>&#125;,</div><div class="line">    &#123;<span class="attr">title</span>: <span class="string">'下拉选项4'</span>&#125;,</div><div class="line">    &#123;<span class="attr">title</span>: <span class="string">'下拉选项5'</span>&#125;</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>4.点击按钮控制显示隐藏，我只需要控制open状态为true或false即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置初始状态为不显示</span></div><div class="line">vm.open = <span class="literal">false</span>;</div><div class="line"><span class="comment">// 显示,关闭浮层</span></div><div class="line">vm.toggle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    vm.open = !vm.open;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>5.点击任一下拉选择，隐藏。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vm.itemClick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	vm.ticketOpen = <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>6.点击空白处，隐藏。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$<span class="built_in">document</span>.off(<span class="string">'click'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	vm.open = <span class="literal">false</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>看到这样的代码，你觉得有问题吗？反正我当时觉得自己一定是对的，但调试结果就是不生效，下拉怎么都不会隐藏。<br>通过断点调试，页面输出open的值，发现js中的open确实已经发生改变，但是页面的值确没有改变，然后联想到双向数据绑定失效。</p>
+<p>谁决定什么事件进入angular context,而哪些又不进入呢？$apply!</p>
+<p>这里声明一点ng-click不需要单独去做处理是因为angular已经做了，因此点击带有ng-click的元素时，事件就会被封装到一个$apply调用。</p>
+<p>所以上面的问题也显而易见，是因为没有调用$apply,事件没有进入angular context, $digest循环永远没有执行。<br>so将code修为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$<span class="built_in">document</span>.off(<span class="string">'click'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    vm.open = <span class="literal">false</span>;</div><div class="line">    $scope.$apply();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这样一测，立马有用了。<br>$apply是$scope的一个函数，调用它会强制一次$digest循环.<br>然后看到网上有人说有种更好用的办法，尝试了一下确实有效：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$<span class="built_in">document</span>.off(<span class="string">'click'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	$scope.$apply(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		vm.open = <span class="literal">false</span>;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>解释为：</p>
+<blockquote>
+<p>What’s the difference?<br>The difference is that in the first version, we are updating the values outside the angular context so if that throws an error, Angular will never know.<br>Obviously in this tiny toy example it won’t make much difference,<br>but imagine that we have an alert box to show errors to our users and we have a 3rd party library that does a network call and it fails.<br>If we don’t wrap it inside an $apply, Angular will never know about the failure and the alert box won’t be there.</p>
+<p>参考文章地址： <a href="http://angular-tips.com/blog/2013/08/watch-how-the-apply-runs-a-digest/" target="_blank" rel="external">http://angular-tips.com/blog/2013/08/watch-how-the-apply-runs-a-digest/</a></p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/07/05/angular-apply/" class="archive-article-date">
+  	<time datetime="2016-07-05T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-05</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/09/09/understanding-module-exports-exports-node-js/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【翻译】understanding-module-exports-exports-node-js
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/20/javascript-object/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript中的对象</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="angular-apply" data-title="angular开发过程中遇到的$apply问题" data-url="https://github.com/silence717/2016/07/05/angular-apply/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

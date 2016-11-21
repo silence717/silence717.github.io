@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>javascript中的数组 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。
+一 创建数组使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：123var empty = [];              // 没有元素的数组var arr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript中的数组">
+<meta property="og:url" content="https://github.com/silence717/2016/06/02/javascript-array/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。
+一 创建数组使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：123var empty = [];              // 没有元素的数组var arr">
+<meta property="og:updated_time" content="2016-11-21T09:57:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript中的数组">
+<meta name="twitter:description" content="####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。
+一 创建数组使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：123var empty = [];              // 没有元素的数组var arr">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-javascript-array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript中的数组
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。</p>
+<h5 id="一-创建数组"><a href="#一-创建数组" class="headerlink" title="一 创建数组"></a>一 创建数组</h5><p>使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> empty = [];              <span class="comment">// 没有元素的数组</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];         <span class="comment">// 有5个数值得数组</span></div><div class="line"><span class="keyword">var</span> mix = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">"a"</span>];    <span class="comment">// 3个不同类型元素</span></div></pre></td></tr></table></figure></p>
+<p>如果省略数组直接量中的某个值，省略的元素将被赋予undefined值。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = [<span class="number">1</span>, , <span class="number">3</span>];        <span class="comment">// 数组有3个元素，第二个元素为undefined</span></div></pre></td></tr></table></figure></p>
+<p>调用构造函数Array()是创建数组的另一种方法。可以用三种方式：</p>
+<p>调用时候没有参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure></p>
+<p>调用时有一个数值参数，它指定长度：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>显式指定两个或多个数组元素或者数组的一个非数值元素：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="string">" test, test"</span>);</div></pre></td></tr></table></figure></p>
+<h5 id="二-数组长度"><a href="#二-数组长度" class="headerlink" title="二 数组长度"></a>二 数组长度</h5><p>每个数组都有一个length属性，就是这个属性区别于常规的js对象。针对稠密数字，length属性值代表数组中元素的个数，其值比数组中最大的所以大1：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[].length                  <span class="comment">// =&gt; 0: 数组没有元素</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].length     <span class="comment">// =&gt; 3: 最大的索引为2，length为3</span></div></pre></td></tr></table></figure></p>
+<p>为了维持这一原则，数组有两个特殊行为：</p>
+<ol>
+<li>如果为一个数组元素赋值，它的索引i大于或等于数组长度时，length属性的值将 设置为i+1</li>
+<li>设置length属性为一个小于当前长度非负整数n时，当前数组中那些大于或等于n的元素从中删除。 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">a.length = <span class="number">3</span>;    <span class="comment">// 现在a为 [1, 2, 3]</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="三-数组元素的添加和删除"><a href="#三-数组元素的添加和删除" class="headerlink" title="三 数组元素的添加和删除"></a>三 数组元素的添加和删除</h5><p>push()方法在数组末尾增加一个或多个元素：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [];              <span class="comment">// 创建一个空数组</span></div><div class="line">arr.push(<span class="string">"a"</span>);             <span class="comment">// 在末尾添加一个元素。arr = ["a"];</span></div></pre></td></tr></table></figure></p>
+<p>unshift()方法在数组首部插入一个元素，并且将其他元素依次移到更高的索引处：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span>];</div><div class="line">arr.unshift(<span class="number">0</span>);          <span class="comment">// 此时arr = [0, 1, 2, 3]</span></div></pre></td></tr></table></figure></p>
+<p>pop()方法从末尾删除一个元素，并返回被删除的元素值。<br>shift()方法从数组头部删除一个元素。</p>
+<h5 id="四-数组遍历"><a href="#四-数组遍历" class="headerlink" title="四 数组遍历"></a>四 数组遍历</h5><p>一般使用for循环来遍历数组元素。例如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len= arr.length; i&lt;len; ++) &#123;</div><div class="line">    <span class="comment">// 循环体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="五-数组方法"><a href="#五-数组方法" class="headerlink" title="五 数组方法"></a>五 数组方法</h4><ol>
+<li><p>join()</p>
+<p> Array.join()方法将数组中所有元素都转化为字符串并连接在一起，返回最后生成的字符串。如果不指定分隔符，默认使用逗号。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">a.join();         <span class="comment">// =&gt; "1,2,3"</span></div><div class="line">a.join(<span class="string">" "</span>);      <span class="comment">// =&gt; "1 2 3"</span></div><div class="line">a.join(<span class="string">""</span>);       <span class="comment">// =&gt; "123"</span></div></pre></td></tr></table></figure>
+<p> Array.join()与String.split()方法的逆向操作，后者是将字符串分割成数组。</p>
+</li>
+<li><p>reverse()</p>
+<p> Array.reverse()方法将数组中的元素颠倒顺序，返回逆向数组。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">a.reverse();     <span class="comment">// =&gt; [3, 2, 1]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>sort()</p>
+<p> Array.sort()将数组中的元素排序并返回排序后的数组。当不带参数调用sort()时，数组元素以字母表顺序排序。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"banana"</span>, <span class="string">"cherry"</span>, <span class="string">"apple"</span>];</div><div class="line">a.sort();                    <span class="comment">// a = ["apple", "banana", "cherry"]</span></div></pre></td></tr></table></figure>
+<p> 如果数组中包含undefined元素，它们会被排到数组的尾部。更多例子在index.js中。</p>
+</li>
+<li><p>concat()</p>
+<p> Array.concat()创建并返回一个新数组，它的元素包括调用concat()的原始数组的元素和concat()的每个参数。如果这些参数中的任何一个自身是数组，则连接的是数组的元素，而非数组本身。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>)                    <span class="comment">// =&gt; [1,2,3,4,5]</span></div><div class="line">a.concat([<span class="number">4</span>,<span class="number">5</span>], [<span class="number">6</span>,<span class="number">7</span>]);          <span class="comment">// =&gt; [1,2,3,4,5,6,7]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>slice()</p>
+<p> Array.sliece方法返回指定数组的一个片段或者子数组。它的两个参数分别制定了片段的开始和结束位置。返回的数组包含第一个参数指定的位置和所有到但不包含第二个参数指定位置之间的所有数组元素。如果只指定一个参数，返回的数组将包含从开始位置到数组结尾的所有元素。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">a.slice(<span class="number">0</span>, <span class="number">3</span>);       <span class="comment">// =&gt; [1,2,3]</span></div><div class="line">a.sliece(<span class="number">3</span>);         <span class="comment">// =&gt; [4,5]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>splice()</p>
+<p> Array.splice()在数组中插入或删除元素的通用方法。第一个参数制定了插入或者删除的起始位置，第二个参数制定了应该从数组中删除的元素个数，如果省略第二个参数，从起始位置到结尾的所有元素都将被删除。返回一个由删除元素组成的数组。<br>例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</div><div class="line">_arr.splice(<span class="number">4</span>);</div><div class="line"><span class="built_in">console</span>.log(_arr);</div><div class="line"><span class="comment">// 返回[5, 6, 7, 8];_arr是[1,2,3,4]</span></div><div class="line">_arr.splice(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(_arr);</div><div class="line"><span class="comment">// 返回[2, 3];_arr是[1,4]</span></div></pre></td></tr></table></figure>
+<p> splice()的前两个参数制定了需要删除数组元素。后面的任意个数的参数指定了需要插入到数组中的元素，从第一个参数指定的位置开始插入。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">a.splice(<span class="number">2</span>, <span class="number">0</span> , <span class="string">'a'</span>, <span class="string">'b'</span>);               <span class="comment">// 返回[],a = [1, 2, 'a', 'b', 3, 4, 5];</span></div><div class="line">a.splice(<span class="number">2</span>, <span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>], <span class="number">3</span>);                <span class="comment">// 返回['a','b'],a = [1,2,[1,2],3,3,4,5];</span></div></pre></td></tr></table></figure>
+<p> 注意：区别于concat(),splice()会插入数组本身而非数组的元素。</p>
+</li>
+<li><p>push()和pop():</p>
+<p> push()在数组尾部添加一个或多个元素，并返回数组新的长度。</p>
+<p> pop()删除数组的最后一个元素，减小数组长度并返回它删除的值。</p>
+</li>
+<li><p>unshift()和shift()</p>
+<p> unshift()在数组的头部添加一个或多个元素，并将已存在的元素移到更高索引的位置来获得足够的空间，最后返回数组新的长度。</p>
+<p> shift()删除数组的第一个元素并将其返回，然后把所有随后的元素下移一个位置来填补头部的空缺。</p>
+</li>
+</ol>
+<h5 id="六-ECMAScript-5中的数组方法"><a href="#六-ECMAScript-5中的数组方法" class="headerlink" title="六 ECMAScript 5中的数组方法"></a>六 ECMAScript 5中的数组方法</h5><ol>
+<li><p>forEach()</p>
+<p> 从头到尾遍历数组，为每个元素调用指定的函数。使用三个参数调用该函数：数组元素、数组元素索引和数组本身。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;</div><div class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    sum += value;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(sum);    <span class="comment">// =&gt; 15</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>map()</p>
+<p> 将调用的数组的每个元素传递给指定的函数，并返回一个数组，它包含该函数的返回值。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a_arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> b = a_arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x*x;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// =&gt;b = [1, 4, 9]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>filter()</p>
+<p> filter()方法返回的数组元素是调用的数组的一个子元素。传递的函数是用来逻辑判定的：该函数返回true或false。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> smalls = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x &lt; <span class="number">3</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// =&gt; smalls = [1,2]</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>every()和some()</p>
+<p> every()和some()方法是数组的逻辑判定：它们对数组元素应用指定的函数进行判定，返回true或false。</p>
+<p> every()针对数组中的所有元素调用判定函数都返回true，它才返回true。</p>
+<p> somt()数组中只杀有一个元素调用函数判定返回true，它就返回true。</p>
+<p> 注意：一旦every()和some()确认该返回什么值它们就会停止遍历数组元素。</p>
+</li>
+<li><p>reduce()和reduceRight()</p>
+<p> reduce()和reduceRight()方法使用指定的函数将数组元素进行组合，生成单个值。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _data = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> sum = _data.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> x+y;</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"><span class="comment">// 求和 =&gt; 15</span></div><div class="line"><span class="keyword">var</span> product = a.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x*y;</div><div class="line">&#125;, <span class="number">1</span>);</div><div class="line"><span class="comment">// 求积 =&gt; 120</span></div><div class="line"><span class="keyword">var</span> max = a.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> x&gt;y ? x : y;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 求最大值 =&gt; 5</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>reduceRight()工作原理和reduce()一样，不同的是它按照数组索引从高到低处理数组。
+</code></pre><ol>
+<li><p>indexOf()和lastIndexOf()  </p>
+<p> 搜索整个数组红具有给定值的元素，返回找的第一份元素的索引或者如果没有找到就返回-1。indexOf()从头至尾搜索，lastIndexOf()则反向搜索。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>];</div><div class="line">a.indexOf(<span class="number">1</span>);         <span class="comment">// =&gt; 1</span></div><div class="line">a.lastIndexOf(<span class="number">1</span>);     <span class="comment">// =&gt; 3</span></div><div class="line">a.indexOf(<span class="number">3</span>);         <span class="comment">// =&gt; -1</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="七-数组类型"><a href="#七-数组类型" class="headerlink" title="七 数组类型"></a>七 数组类型</h5><p>使用Array.isArray()函数来判断是否为数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.isArray([]);            <span class="comment">// =&gt; true</span></div><div class="line"><span class="built_in">Array</span>.isArray(&#123;&#125;);            <span class="comment">// =&gt; false</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/06/02/javascript-array/" class="archive-article-date">
+  	<time datetime="2016-06-02T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/06/05/javascript-closure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javascript中的闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/02/angular-ui-router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">angular-ui-router使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript-array" data-title="javascript中的数组" data-url="https://github.com/silence717/2016/06/02/javascript-array/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"810edad69c1b9e384b652eedb71a42ba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

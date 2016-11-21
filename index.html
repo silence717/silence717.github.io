@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="web前端个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="背包客在前端路上爬行">
+<meta property="og:url" content="https://github.com/silence717/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="web前端个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="背包客在前端路上爬行">
+<meta name="twitter:description" content="web前端个人博客">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-angular-gulp-es5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/10/angular-gulp-es5/">step by step建立一个angular+gulp+es5项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="源码地址：https-github-com-silence717-angular-gulp-seed"><a href="#源码地址：https-github-com-silence717-angular-gulp-seed" class="headerlink" title="源码地址：https://github.com/silence717/angular-gulp-seed"></a>源码地址：<a href="https://github.com/silence717/angular-gulp-seed">https://github.com/silence717/angular-gulp-seed</a></h4><h2 id="创建一个空文件夹名字任意，此项目为angular-gulp-seed"><a href="#创建一个空文件夹名字任意，此项目为angular-gulp-seed" class="headerlink" title="创建一个空文件夹名字任意，此项目为angular-gulp-seed"></a>创建一个空文件夹名字任意，此项目为angular-gulp-seed</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir angular-gulp-seed</div></pre></td></tr></table></figure>
+<h2 id="初始化工程"><a href="#初始化工程" class="headerlink" title="初始化工程"></a>初始化工程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
+<h2 id="创建项目基本目录结构如下："><a href="#创建项目基本目录结构如下：" class="headerlink" title="创建项目基本目录结构如下："></a>创建项目基本目录结构如下：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+src</div><div class="line">	+app	        // 业务模块</div><div class="line">		-app.js	// 应用入口</div><div class="line">		+demo   // 业务模块目录，所有子模块均遵循此目录</div><div class="line">		    - module.js      // 模块声明文件</div><div class="line">		    - controller.js  // vm层</div><div class="line">		    - index.html     // 主入口模板</div><div class="line">		    - router.js      // 模块路由文件</div><div class="line">		    - style.css      // 模块样式</div><div class="line">		+home</div><div class="line">	+assets	        // 静态资源目录</div><div class="line">		-images</div><div class="line">		-css</div><div class="line">	+common	        // 公共服务</div><div class="line">	+components	// 公共组件</div><div class="line">	+scripts         // gulp脚本</div><div class="line">	    - gulp.build.js   // build任务</div><div class="line">	    - gulp.common.js  // dev,build公共任务</div><div class="line">	    - gulp.config.js  // 基础配置</div><div class="line">	    - gulp.dev.js     // dev任务</div><div class="line">	index.html  // 主页面</div><div class="line"></div><div class="line">package.json</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/11/10/angular-gulp-es5/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/10/angular-gulp-es5/" class="archive-article-date">
+  	<time datetime="2016-11-10T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-10</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-qiyue2ansheng" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/01/qiyue2ansheng/">【电影】七月与安生</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周六晚上闲来无事，宅在家里看了一部电影《七月与安生》，很久不看这种国产的青春文艺片，但是这部没有堕胎，没有车祸的电影让我触动很大。  </p>
+<p>七月，一个乖巧听话的孩子，按照大人设计好的轨迹一步步成长，最后过上一眼就能看到头的生活，也许这就是家人所谓的平淡与安稳。可是七月的心情一直向往去流浪，去过安生的生活。  </p>
+<p>安生，一个真性情的女子，13岁的相识让她与七月成为命中注定的好友，两个人相爱相杀。为了七月，安生开始了流浪，过上了一种七月永远也想不到的生活，后来安生在讲述自己过往生活那种轻描淡写的语气，我很是心疼。而安生一直渴望有一个安稳的生活，不用再去流浪。  </p>
+<p>记得吵架的时候，七月吼着对安生说：在这个世界上，没有人比我更爱你！希望我们每个人的身边都有这样一个人，当你没有了一切的时候，还有一个人爱着你。  </p>
+<p>最后两个彼此羡慕的人交换了人生，各自都过上了彼此想要的生活：一个拥有了安定的生活，一个终于开始流浪去看风景。然而我太天真了，七月的生命定格在了27岁，这些故事也是安生用七月的笔名书写。七月就是安生，安生亦是七月！  </p>
+<p>我们终究应该要过自己想要的生活还是按照期待的生活着？我不知道。。。  </p>
+<p>我听说，如果我踩着一个人的影子，这个人就不会走远了。  </p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/01/qiyue2ansheng/" class="archive-article-date">
+  	<time datetime="2016-11-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-qinghaihu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/10/qinghaihu/">青海湖20160805-20160808</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直想去西藏和环青海湖骑行，工作的原因却一直也没有时间。直到7月底一直还在纠结到底要不要来一场说走就走的旅行，刚好工作出现了一些问题，想给自己一个假期放松一下，然后就开始订票，做攻略，联系包车。</p>
+<h3 id="8月5号"><a href="#8月5号" class="headerlink" title="8月5号"></a>8月5号</h3><p>下班直接奔向火车站一张硬座车票开始开始踏上期待已久的旅途，很多年没有坐过绿皮硬座火车，夜晚也是难熬之极。</p>
+<h3 id="8月6号"><a href="#8月6号" class="headerlink" title="8月6号"></a>8月6号</h3><p>早晨到达西宁，包车的师傅来接了我们，然后和三个新疆朋友一起开始开始了这趟旅行。</p>
+<p>第一站日月山，山上有两个亭子，一个日亭一个月亭，据说是文成公主出塞的时候休息的地方。</p>
+<p>第二站倒淌河，地方建有文成公主雕像，栩栩如生。位于青藏高原第一镇倒淌河镇，“天下河水皆向东，唯有此溪向西流”。文成公主当时和亲嫁给吐蕃松赞干布，在去西藏的过程中，到达日月山，回首不见长安，西望一片荒凉，念家乡思父母，悲恸不止，挥泪西行，公主的泪水便汇成了这条倒淌河。</p>
+<p>第三站青海湖，一直向往的地方！车越开越近，蓝色的青海湖，慢慢的清晰。蓝蓝的天，白白的云，黄色的油菜花，颜色搭配起来令人心旷神怡。青海湖的美，词穷，有关美景，只有你置身其中，才可以明明白白的感受到，它不只给你的眼睛做了spa，美妙的是，会让你释怀很多之前的困扰……</p>
+<p><img src="/images/qinghaihu/qinghaihu.jpg" alt=""></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/10/10/qinghaihu/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/10/qinghaihu/" class="archive-article-date">
+  	<time datetime="2016-10-10T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-10</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/旅行/">旅行</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-w3c-vs-whatwg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/09/w3c-vs-whatwg/">【翻译】W3C vs. WhatWG HTML5 标准-差异记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>原文地址：<a href="http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/">http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/</a>**</p>
+</blockquote>
+<p>几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了<a href="http://www.sitepoint.com/5-obsolete-features-html5/">5个有趣但现在过时的功能</a> 。<br>问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相同标记语言的两种不同风格之间进行选择：W3C开发的规范和WHATWG开发的规范。</p>
+<blockquote>
+<p>译者注：WHATWG：Web Hypertext Application Technology Working Group，网页超文本应用技术工作小组，是一个以推动网络标准为目的而成立的组织。（为了准确，后面不做翻译）</p>
+</blockquote>
+<p>就大部分而言，这些规范都是相同或者说非常相似的，但是几年过去之后，越来越多的差异出现。你会关心他们吗？在大多数情况下不会，因为它对你和你的项目差异很小，或者浏览器供应商会支持这两个标准。然而，在短期内，那些影响已给定功能实现的差异可能对你比较重要。每个浏览器供应商遵循规范都有自己的需求。例如<a href="https://groups.google.com/forum/#!msg/mozilla.dev.platform/BnY1261cNJo/MdkaT_EX6M0J">来自于Mozilla的David Baron目前声明</a>：</p>
+<blockquote>
+<p>当W3C和WHATWG的HTML标准不同时，我们倾向于遵循WHATWG标准。</p>
+</blockquote>
+<p>在这篇文章里，我们将解决W3C和WHATWG标准之间的一些差异，在每个部分的结尾我会给出我对差异的看法。这并不是一个全面的列表，但是足够让你在这个问题有自己的观点。</p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/10/09/w3c-vs-whatwg/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/09/w3c-vs-whatwg/" class="archive-article-date">
+  	<time datetime="2016-10-09T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-study-materials-collection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/study-materials-collection/">学习资料网址收集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>都是平时学习过程中收集的一些网址，有需要的可以看看！</p>
+<h4 id="angular"><a href="#angular" class="headerlink" title="angular"></a>angular</h4><p>angularjs新闻: <a href="https://angular.jsnews.io/">https://angular.jsnews.io/</a></p>
+<h5 id="angular1-x"><a href="#angular1-x" class="headerlink" title="angular1.x"></a>angular1.x</h5><ol>
+<li>官网： <a href="https://angularjs.org/">https://angularjs.org/</a></li>
+<li>es5最佳实践: <a href="https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md">https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md</a></li>
+<li>es2015最佳实践: <a href="https://github.com/toddmotto/angular-styleguide/blob/master/i18n/zh-cn.md">https://github.com/toddmotto/angular-styleguide/blob/master/i18n/zh-cn.md</a></li>
+<li>codeReview checklist: <a href="https://angularcodereview.com/angularjs/">https://angularcodereview.com/angularjs/</a></li>
+<li>angular移动版ionic: <a href="http://www.ionic.wang/">http://www.ionic.wang/</a></li>
+<li>A Better Way to Learn AngularJS: <a href="https://thinkster.io/a-better-way-to-learn-angularjs">https://thinkster.io/a-better-way-to-learn-angularjs</a></li>
+<li>1.5生命周期钩子英文原文: <a href="https://toddmotto.com/angular-1-5-lifecycle-hooks">https://toddmotto.com/angular-1-5-lifecycle-hooks</a></li>
+<li>1.5生命周期钩子中文翻译: <a href="https://github.com/Jocs/jocs.github.io/issues/3">https://github.com/Jocs/jocs.github.io/issues/3</a></li>
+<li>angularjs优化心得: <a href="https://github.com/atian25/blog/issues/5">https://github.com/atian25/blog/issues/5</a></li>
+</ol>
+</blockquote>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/10/08/study-materials-collection/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/study-materials-collection/" class="archive-article-date">
+  	<time datetime="2016-10-08T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-creating-crud-app-minutes-angulars-resource" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/28/creating-crud-app-minutes-angulars-resource/">【翻译】creating-crud-app-minutes-angulars-resource</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource">https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource</a></p>
+<p>大量的单页应用都有CRUD操作。如果你使用<code>angularjs</code>创建一个CRUD操作，那么你可以利用$resource服务的优势。<code>$resource</code>服务是建立在<code>$http</code>服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。所以，我们一起探索一下<code>$resource</code>,并且在<code>angular</code>中实现CRUD的操作。</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p><code>$resource</code>服务没有打包到angularjs中。你需要下载一个独立的文件叫<code>angular-resource.js</code>并且把它引入到HTML页面中。这个文件可以从这里下载：<a href="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js">http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js</a>。</p>
+<p>另外，为了使用<code>$resource</code>你需要在主模块中注入<code>ngResource</code>模块。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'mainApp'</span>,[<span class="string">'ngResource'</span>]); <span class="comment">//mainApp is our main module</span></div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/28/creating-crud-app-minutes-angulars-resource/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/28/creating-crud-app-minutes-angulars-resource/" class="archive-article-date">
+  	<time datetime="2016-09-28T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-28</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-resource/">angular-resource</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-webpack-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/20/webpack-conclusion/">webpack实践笔记总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h4><h5 id="需要单独安装并且在config文件中的modules下进行配置，配置参数有："><a href="#需要单独安装并且在config文件中的modules下进行配置，配置参数有：" class="headerlink" title="需要单独安装并且在config文件中的modules下进行配置，配置参数有："></a>需要单独安装并且在config文件中的modules下进行配置，配置参数有：</h5><ul>
+<li>test：匹配loaders处理的文件的拓展名的正则表达式（必须）</li>
+<li>loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。</li>
+<li>include：必须处理的文件（文件夹）（可选）</li>
+<li>exclude: 屏蔽不需要处理的文件（文件夹）（可选）</li>
+<li>query：为loaders提供额外的设置选项（可选)</li>
+</ul>
+<h5 id="css-loader-和-style-loader区别"><a href="#css-loader-和-style-loader区别" class="headerlink" title="css-loader 和 style-loader区别"></a>css-loader 和 style-loader区别</h5><ul>
+<li>css-loader实现读取功能</li>
+<li>style-loader将所有的计算后的样式加入页面中</li>
+<li>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 感叹号的作用在于使同一文件能够使用不同类型的loader</span></div><div class="line">...</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/20/webpack-conclusion/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/20/webpack-conclusion/" class="archive-article-date">
+  	<time datetime="2016-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-20</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-webpack-loaders" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/19/webpack-loaders/">webpack实践笔记添加loaders</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="源码地址-：-https-github-com-silence717-webpack-practice"><a href="#源码地址-：-https-github-com-silence717-webpack-practice" class="headerlink" title="[源码地址]：( https://github.com/silence717/webpack-practice )"></a>[源码地址]：( <a href="https://github.com/silence717/webpack-practice">https://github.com/silence717/webpack-practice</a> )</h3><p>本篇文章基于分支step2,切换分支：git checkout step2</p>
+<h3 id="loader加载顺序"><a href="#loader加载顺序" class="headerlink" title="loader加载顺序"></a>loader加载顺序</h3><p>分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。</p>
+<h3 id="添加es6-loader"><a href="#添加es6-loader" class="headerlink" title="添加es6 loader"></a>添加es6 loader</h3><h4 id="创建一个es6的文件login-es6"><a href="#创建一个es6的文件login-es6" class="headerlink" title="创建一个es6的文件login.es6"></a>创建一个es6的文件login.es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// login.es6</span></div><div class="line"><span class="keyword">let</span> login = <span class="function">(<span class="params">username, password</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(username !== <span class="string">'admin'</span> || password !== <span class="string">'123'</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'incorrect login'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'correct login'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">login(<span class="string">'admin'</span>, <span class="string">'123'</span>);</div></pre></td></tr></table></figure>
+<p>需要使用es6，由于浏览器支持不够，我们必须使用babel转为es5的code。</p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/19/webpack-loaders/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/19/webpack-loaders/" class="archive-article-date">
+  	<time datetime="2016-09-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-19</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
