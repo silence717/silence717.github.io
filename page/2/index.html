@@ -147,6 +147,61 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-webpack-loaders" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/19/webpack-loaders/">webpack实践笔记添加loaders</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="源码地址-：-https-github-com-silence717-webpack-practice"><a href="#源码地址-：-https-github-com-silence717-webpack-practice" class="headerlink" title="[源码地址]：( https://github.com/silence717/webpack-practice )"></a>[源码地址]：( <a href="https://github.com/silence717/webpack-practice">https://github.com/silence717/webpack-practice</a> )</h3><p>本篇文章基于分支step2,切换分支：git checkout step2</p>
+<h3 id="loader加载顺序"><a href="#loader加载顺序" class="headerlink" title="loader加载顺序"></a>loader加载顺序</h3><p>分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。</p>
+<h3 id="添加es6-loader"><a href="#添加es6-loader" class="headerlink" title="添加es6 loader"></a>添加es6 loader</h3><h4 id="创建一个es6的文件login-es6"><a href="#创建一个es6的文件login-es6" class="headerlink" title="创建一个es6的文件login.es6"></a>创建一个es6的文件login.es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// login.es6</span></div><div class="line"><span class="keyword">let</span> login = <span class="function">(<span class="params">username, password</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(username !== <span class="string">'admin'</span> || password !== <span class="string">'123'</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'incorrect login'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'correct login'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">login(<span class="string">'admin'</span>, <span class="string">'123'</span>);</div></pre></td></tr></table></figure>
+<p>需要使用es6，由于浏览器支持不够，我们必须使用babel转为es5的code。</p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/19/webpack-loaders/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/19/webpack-loaders/" class="archive-article-date">
+  	<time datetime="2016-09-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-19</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack-start" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -630,7 +685,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

@@ -147,6 +147,64 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-javascript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/14/javascript-prototype/">【翻译】javascript-prototype</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="http://dailyjs.com/2012/05/20/js101-prototype/">http://dailyjs.com/2012/05/20/js101-prototype/</a></p>
+<p>在花费了很多年研究面向对象编程之后，想在javascript使用是令人失望的。主要是从根源上缺少一个<code>class</code>这样的关键词。然而，javascript的设计不会成为阻碍 – 精通它基于原型的继承，将会加深你对该语言的理解。</p>
+<p>首先我们需要弄清楚面向对象与面向类编程的区别。Javascript提供了我们需要的工具来完成大多数语言的类可以做的事情 – 我们只需要学习如何正确使用它。</p>
+<p>我们简单的看一下<code>prototype</code>属性，看它如何深化我们对javascript的了解。</p>
+<h3 id="prototype属性（The-prototype-Property）"><a href="#prototype属性（The-prototype-Property）" class="headerlink" title="prototype属性（The prototype Property）"></a><code>prototype</code>属性（The prototype Property）</h3><p><code>prototype</code>属性是一个内部属性，它被用于实现继承。我们这里的“继承”是一种特定的继承形式。因为状态和方法都由对象承载，所以我们可以说结构、行为和状态都是继承的。这与基于类的语言形成对比，其状态由实例承载，而方法由类承载。</p>
+<p>构造函数就是一个具有属性的方法，该属性被称作<code>prototype</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(Animal.protype);</div></pre></td></tr></table></figure></p>
+<p><code>{}</code>标识<code>Animal</code>具有一个<code>prototype</code>属性，但是没有用户定义它。我们可以随意添加值和方法:</p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/12/14/javascript-prototype/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/14/javascript-prototype/" class="archive-article-date">
+  	<time datetime="2016-12-14T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-angular-gulp-es5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -564,61 +622,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-webpack-loaders" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/19/webpack-loaders/">webpack实践笔记添加loaders</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="源码地址-：-https-github-com-silence717-webpack-practice"><a href="#源码地址-：-https-github-com-silence717-webpack-practice" class="headerlink" title="[源码地址]：( https://github.com/silence717/webpack-practice )"></a>[源码地址]：( <a href="https://github.com/silence717/webpack-practice">https://github.com/silence717/webpack-practice</a> )</h3><p>本篇文章基于分支step2,切换分支：git checkout step2</p>
-<h3 id="loader加载顺序"><a href="#loader加载顺序" class="headerlink" title="loader加载顺序"></a>loader加载顺序</h3><p>分了三个级别，preloaders,loaders,postloaders，分别代表前中后，三个处理状态。</p>
-<h3 id="添加es6-loader"><a href="#添加es6-loader" class="headerlink" title="添加es6 loader"></a>添加es6 loader</h3><h4 id="创建一个es6的文件login-es6"><a href="#创建一个es6的文件login-es6" class="headerlink" title="创建一个es6的文件login.es6"></a>创建一个es6的文件login.es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// login.es6</span></div><div class="line"><span class="keyword">let</span> login = <span class="function">(<span class="params">username, password</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(username !== <span class="string">'admin'</span> || password !== <span class="string">'123'</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'incorrect login'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'correct login'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">login(<span class="string">'admin'</span>, <span class="string">'123'</span>);</div></pre></td></tr></table></figure>
-<p>需要使用es6，由于浏览器支持不够，我们必须使用babel转为es5的code。</p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/09/19/webpack-loaders/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/19/webpack-loaders/" class="archive-article-date">
-  	<time datetime="2016-09-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-19</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -689,7 +692,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

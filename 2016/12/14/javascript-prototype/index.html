@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>【翻译】javascript-prototype | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文地址：http://dailyjs.com/2012/05/20/js101-prototype/
+在花费了很多年研究面向对象编程之后，想在javascript使用是令人失望的。主要是从根源上缺少一个class这样的关键词。然而，javascript的设计不会成为阻碍 – 精通它基于原型的继承，将会加深你对该语言的理解。
+首先我们需要弄清楚面向对象与面向类编程的区别。Javascript提供了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】javascript-prototype">
+<meta property="og:url" content="https://github.com/silence717/2016/12/14/javascript-prototype/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="原文地址：http://dailyjs.com/2012/05/20/js101-prototype/
+在花费了很多年研究面向对象编程之后，想在javascript使用是令人失望的。主要是从根源上缺少一个class这样的关键词。然而，javascript的设计不会成为阻碍 – 精通它基于原型的继承，将会加深你对该语言的理解。
+首先我们需要弄清楚面向对象与面向类编程的区别。Javascript提供了">
+<meta property="og:updated_time" content="2016-12-14T06:30:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】javascript-prototype">
+<meta name="twitter:description" content="原文地址：http://dailyjs.com/2012/05/20/js101-prototype/
+在花费了很多年研究面向对象编程之后，想在javascript使用是令人失望的。主要是从根源上缺少一个class这样的关键词。然而，javascript的设计不会成为阻碍 – 精通它基于原型的继承，将会加深你对该语言的理解。
+首先我们需要弄清楚面向对象与面向类编程的区别。Javascript提供了">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-javascript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【翻译】javascript-prototype
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="http://dailyjs.com/2012/05/20/js101-prototype/" target="_blank" rel="external">http://dailyjs.com/2012/05/20/js101-prototype/</a></p>
+<p>在花费了很多年研究面向对象编程之后，想在javascript使用是令人失望的。主要是从根源上缺少一个<code>class</code>这样的关键词。然而，javascript的设计不会成为阻碍 – 精通它基于原型的继承，将会加深你对该语言的理解。</p>
+<p>首先我们需要弄清楚面向对象与面向类编程的区别。Javascript提供了我们需要的工具来完成大多数语言的类可以做的事情 – 我们只需要学习如何正确使用它。</p>
+<p>我们简单的看一下<code>prototype</code>属性，看它如何深化我们对javascript的了解。</p>
+<h3 id="prototype属性（The-prototype-Property）"><a href="#prototype属性（The-prototype-Property）" class="headerlink" title="prototype属性（The prototype Property）"></a><code>prototype</code>属性（The prototype Property）</h3><p><code>prototype</code>属性是一个内部属性，它被用于实现继承。我们这里的“继承”是一种特定的继承形式。因为状态和方法都由对象承载，所以我们可以说结构、行为和状态都是继承的。这与基于类的语言形成对比，其状态由实例承载，而方法由类承载。</p>
+<p>构造函数就是一个具有属性的方法，该属性被称作<code>prototype</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(Animal.protype);</div></pre></td></tr></table></figure></p>
+<p><code>{}</code>标识<code>Animal</code>具有一个<code>prototype</code>属性，但是没有用户定义它。我们可以随意添加值和方法:</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype.type = <span class="string">'Unknown'</span>;  </div><div class="line">Animal.prototype.weight = <span class="number">0</span>;  </div><div class="line">Animal.prototype.weightUnits = <span class="string">'kg'</span>;</div><div class="line"></div><div class="line">Animal.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.type + <span class="string">', '</span> + <span class="keyword">this</span>.weight + <span class="keyword">this</span>.weightUnits;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> molly = <span class="keyword">new</span> Animal();  </div><div class="line">molly.type = <span class="string">'Dog'</span>;  </div><div class="line">molly.weight = <span class="number">28</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(molly.toString());  <span class="comment">// Dog, 28kg</span></div></pre></td></tr></table></figure>
+<p>这将会输出”Dog, 28kg”。我们可以使用对象字面量将这些赋值分组：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">Animal.prototype = &#123;  </div><div class="line">  <span class="attr">type</span>: <span class="string">'Unknown'</span>,</div><div class="line">  <span class="attr">weight</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">weightUnits</span>: <span class="string">'kg'</span>,</div><div class="line"></div><div class="line">  <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.type + <span class="string">', '</span> + <span class="keyword">this</span>.weight + <span class="keyword">this</span>.weightUnits;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这样就和你熟悉的类的方式差异不是很大。</p>
+<h3 id="动态原型（Dynamic-Prototypes）"><a href="#动态原型（Dynamic-Prototypes）" class="headerlink" title="动态原型（Dynamic Prototypes）"></a>动态原型（Dynamic Prototypes）</h3><p>通过指定值可以给对象动态的添加属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> molly = <span class="keyword">new</span> Animal()  </div><div class="line">  , harley = <span class="keyword">new</span> Animal();</div><div class="line"></div><div class="line">molly.type = <span class="string">'Dog'</span>;  </div><div class="line">molly.weight = <span class="number">28</span>;</div><div class="line"></div><div class="line">harley.type = <span class="string">'Dog'</span>;  </div><div class="line">harley.weight = <span class="number">38</span>;  </div><div class="line">harley.name = <span class="string">'Harley'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(molly);  </div><div class="line"><span class="built_in">console</span>.log(harley);</div><div class="line"></div><div class="line"><span class="comment">// &#123; type: 'Dog', weight: 28 &#125;</span></div><div class="line"><span class="comment">// &#123; type: 'Dog', weight: 38, name: 'Harley' &#125;</span></div></pre></td></tr></table></figure>
+<p>在这里添加<code>name</code>属性只影响了实例。然而，构造函数的属性可以被改变，并且将影响用这个原型创建的对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Animal.prototype.weightUnits = <span class="string">'oz'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(molly.toString())  </div><div class="line"><span class="comment">// Now displays 'Dog, 28oz'</span></div></pre></td></tr></table></figure></p>
+<p>这就是为什么人们只会扩展自己的库而不去改变内置原型，或者说只有这么做才是安全的。我们完全有可能改变对象，例如使用<code>String</code>的内置方法做一些不安全的事情：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.match = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'alex'</span>.match(<span class="regexp">/1234/</span>));</div></pre></td></tr></table></figure></p>
+<p>输出为<code>true</code>,所以现在我成功的破坏了很多程序都在依赖的基础方法。<br>改变内置原型也不一定全部是坏的；我们使用它有用的东西，如修补支持更旧版本的<code>ECMAScript</code>在旧版的浏览器。</p>
+<p>如果我们替换<code>prototype</code>属性会发生什么？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> molly = <span class="keyword">new</span> Animal()  </div><div class="line">  , harley;</div><div class="line"></div><div class="line">molly.type = <span class="string">'Dog'</span>;  </div><div class="line">molly.weight = <span class="number">28</span>;</div><div class="line"></div><div class="line">Animal.prototype = &#123;  </div><div class="line">  <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'...'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">harley = <span class="keyword">new</span> Animal;  </div><div class="line">harley.type = <span class="string">'Dog'</span>;  </div><div class="line">harley.weight = <span class="number">38</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(molly.toString());  </div><div class="line"><span class="built_in">console</span>.log(harley.toString());</div><div class="line"></div><div class="line"><span class="comment">// Dog, 28kg</span></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure></p>
+<p>尽管事实上改变原型会影响所有实例，但是完全替换构造函数的原型不会影响旧实例。为什么？实例具有对原型的引用，而不是离散拷贝。想象它就是这样：使用<code>new</code>关键字创建的每个实例都链接到原始原型。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/14/javascript-prototype/" class="archive-article-date">
+  	<time datetime="2016-12-14T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/10/angular-gulp-es5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">step by step建立一个angular+gulp+es5项目</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript-prototype" data-title="【翻译】javascript-prototype" data-url="https://github.com/silence717/2016/12/14/javascript-prototype/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"silence717"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    		<span id="busuanzi_container_page_pv">
+			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+			</span>
+    	</div>
+    	<div class="footer-right">
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+		</div>
+	</div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
