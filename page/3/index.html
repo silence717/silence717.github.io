@@ -16,12 +16,12 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/silence717">
-  <title>Tag: html | 背包客在前端路上爬行</title>
+  <title>背包客在前端路上爬行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="web前端个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="背包客在前端路上爬行">
-<meta property="og:url" content="https://github.com/silence717/tags/html/index.html">
+<meta property="og:url" content="https://github.com/silence717/page/3/index.html">
 <meta property="og:site_name" content="背包客在前端路上爬行">
 <meta property="og:description" content="web前端个人博客">
 <meta name="twitter:card" content="summary">
@@ -147,52 +147,68 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
-  
+    <article id="post-javascript-array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/10/09/w3c-vs-whatwg/" class="archive-article-date">
-  	<time datetime="2016-10-09T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/09/w3c-vs-whatwg/">【翻译】W3C vs. WhatWG HTML5 标准-差异记录</a>
+      <a class="article-title" href="/2016/06/02/javascript-array/">javascript中的数组</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。</p>
+<h5 id="一-创建数组"><a href="#一-创建数组" class="headerlink" title="一 创建数组"></a>一 创建数组</h5><p>使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> empty = [];              <span class="comment">// 没有元素的数组</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];         <span class="comment">// 有5个数值得数组</span></div><div class="line"><span class="keyword">var</span> mix = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">"a"</span>];    <span class="comment">// 3个不同类型元素</span></div></pre></td></tr></table></figure></p>
+<p>如果省略数组直接量中的某个值，省略的元素将被赋予undefined值。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = [<span class="number">1</span>, , <span class="number">3</span>];        <span class="comment">// 数组有3个元素，第二个元素为undefined</span></div></pre></td></tr></table></figure></p>
+<p>调用构造函数Array()是创建数组的另一种方法。可以用三种方式：</p>
+<p>调用时候没有参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure></p>
+<p>调用时有一个数值参数，它指定长度：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</div></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/06/02/javascript-array/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/06/02/javascript-array/" class="archive-article-date">
+  	<time datetime="2016-06-02T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-02</time>
+</a>
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 
 
       </div>
@@ -221,10 +237,10 @@ var _hmt = _hmt || [];
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

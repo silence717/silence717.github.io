@@ -147,6 +147,70 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-webpack-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/20/webpack-conclusion/">webpack实践笔记总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h4><h5 id="需要单独安装并且在config文件中的modules下进行配置，配置参数有："><a href="#需要单独安装并且在config文件中的modules下进行配置，配置参数有：" class="headerlink" title="需要单独安装并且在config文件中的modules下进行配置，配置参数有："></a>需要单独安装并且在config文件中的modules下进行配置，配置参数有：</h5><ul>
+<li>test：匹配loaders处理的文件的拓展名的正则表达式（必须）</li>
+<li>loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。</li>
+<li>include：必须处理的文件（文件夹）（可选）</li>
+<li>exclude: 屏蔽不需要处理的文件（文件夹）（可选）</li>
+<li>query：为loaders提供额外的设置选项（可选)</li>
+</ul>
+<h5 id="css-loader-和-style-loader区别"><a href="#css-loader-和-style-loader区别" class="headerlink" title="css-loader 和 style-loader区别"></a>css-loader 和 style-loader区别</h5><ul>
+<li>css-loader实现读取功能</li>
+<li>style-loader将所有的计算后的样式加入页面中</li>
+<li>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 感叹号的作用在于使同一文件能够使用不同类型的loader</span></div><div class="line">...</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/20/webpack-conclusion/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/20/webpack-conclusion/" class="archive-article-date">
+  	<time datetime="2016-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-20</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack-loaders" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -501,63 +565,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-javascript-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/02/javascript-array/">javascript中的数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####数组是值的有序集合。每个值叫做一个元素，而每个元素在数组中有一个位置，以数字表示，称为索引。javascript的数组是无类型的：数组元素可以是任意类型，并且同一个数组中的不同元素也可能有不同的类型。</p>
-<h5 id="一-创建数组"><a href="#一-创建数组" class="headerlink" title="一 创建数组"></a>一 创建数组</h5><p>使用数组直接量是创建数组最简单的方法，在方括号中将数组元素用逗号隔开即可。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> empty = [];              <span class="comment">// 没有元素的数组</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];         <span class="comment">// 有5个数值得数组</span></div><div class="line"><span class="keyword">var</span> mix = [<span class="number">1</span>, <span class="literal">true</span>, <span class="string">"a"</span>];    <span class="comment">// 3个不同类型元素</span></div></pre></td></tr></table></figure></p>
-<p>如果省略数组直接量中的某个值，省略的元素将被赋予undefined值。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = [<span class="number">1</span>, , <span class="number">3</span>];        <span class="comment">// 数组有3个元素，第二个元素为undefined</span></div></pre></td></tr></table></figure></p>
-<p>调用构造函数Array()是创建数组的另一种方法。可以用三种方式：</p>
-<p>调用时候没有参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure></p>
-<p>调用时有一个数值参数，它指定长度：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</div></pre></td></tr></table></figure></p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/06/02/javascript-array/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/06/02/javascript-array/" class="archive-article-date">
-  	<time datetime="2016-06-02T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-angular-ui-router" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -617,7 +624,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -685,7 +692,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 10px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

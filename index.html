@@ -147,6 +147,64 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-webpack2-getting-started" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/15/webpack2-getting-started/">webpack 2 实践系列（一） — 安装与入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>源码地址：<a href="https://github.com/silence717/webpack2-demos">https://github.com/silence717/webpack2-demos</a></strong> </p>
+<p>webpack在你的应用中是一个模块打包工具。webpack可以简化工作流，快速构建一个应用程序的依赖关系图，按照它们正确的顺序绑定。webpack可以配置定制优化你的代码，拆分vendor/css/js代码用于生产环境，运行一个可以及时部署代码并且页面无刷新的开发服务器，还有许多很酷的功能。</p>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>开始之前首先你得在本地安装一个新版的nodejs。这是一个比较好的基础。老版本你可能会遇到各种与webpack相关的功能丢失或者缺少一些依赖的包。</p>
+<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack -g</div></pre></td></tr></table></figure>
+<p>安装成功之后，现在<code>webpack</code>命令就在全局生效。<br>然而，这不是一个最佳实践，因为它会锁定到一个特定版本的webpack,你在项目中使用不同版本的可能会失效。</p>
+<h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack --save-dev</div><div class="line">npm install webpack@&lt;version&gt; --save-dev</div></pre></td></tr></table></figure>
+<p>这是一种比较推荐的方法。<br><strong>如果你想运行本地安装的webpack,你可以进入它的bin里面，就像这样 node_modules/.bin/webpack</strong></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/12/15/webpack2-getting-started/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/15/webpack2-getting-started/" class="archive-article-date">
+  	<time datetime="2016-12-15T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-15</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack2/">webpack2</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-javascript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -558,73 +616,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-webpack-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/20/webpack-conclusion/">webpack实践笔记总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h4><h5 id="需要单独安装并且在config文件中的modules下进行配置，配置参数有："><a href="#需要单独安装并且在config文件中的modules下进行配置，配置参数有：" class="headerlink" title="需要单独安装并且在config文件中的modules下进行配置，配置参数有："></a>需要单独安装并且在config文件中的modules下进行配置，配置参数有：</h5><ul>
-<li>test：匹配loaders处理的文件的拓展名的正则表达式（必须）</li>
-<li>loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。</li>
-<li>include：必须处理的文件（文件夹）（可选）</li>
-<li>exclude: 屏蔽不需要处理的文件（文件夹）（可选）</li>
-<li>query：为loaders提供额外的设置选项（可选)</li>
-</ul>
-<h5 id="css-loader-和-style-loader区别"><a href="#css-loader-和-style-loader区别" class="headerlink" title="css-loader 和 style-loader区别"></a>css-loader 和 style-loader区别</h5><ul>
-<li>css-loader实现读取功能</li>
-<li>style-loader将所有的计算后的样式加入页面中</li>
-<li>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 感叹号的作用在于使同一文件能够使用不同类型的loader</span></div><div class="line">...</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/09/20/webpack-conclusion/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/20/webpack-conclusion/" class="archive-article-date">
-  	<time datetime="2016-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-20</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -692,7 +686,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 10px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

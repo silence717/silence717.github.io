@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>webpack 2 实践系列（一） — 安装与入门 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="源码地址：https://github.com/silence717/webpack2-demos 
+webpack在你的应用中是一个模块打包工具。webpack可以简化工作流，快速构建一个应用程序的依赖关系图，按照它们正确的顺序绑定。webpack可以配置定制优化你的代码，拆分vendor/css/js代码用于生产环境，运行一个可以及时部署代码并且页面无刷新的开发服务器，还有许多很酷的功能。
+安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack 2 实践系列（一） — 安装与入门">
+<meta property="og:url" content="https://github.com/silence717/2016/12/15/webpack2-getting-started/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="源码地址：https://github.com/silence717/webpack2-demos 
+webpack在你的应用中是一个模块打包工具。webpack可以简化工作流，快速构建一个应用程序的依赖关系图，按照它们正确的顺序绑定。webpack可以配置定制优化你的代码，拆分vendor/css/js代码用于生产环境，运行一个可以及时部署代码并且页面无刷新的开发服务器，还有许多很酷的功能。
+安">
+<meta property="og:updated_time" content="2016-12-14T16:04:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack 2 实践系列（一） — 安装与入门">
+<meta name="twitter:description" content="源码地址：https://github.com/silence717/webpack2-demos 
+webpack在你的应用中是一个模块打包工具。webpack可以简化工作流，快速构建一个应用程序的依赖关系图，按照它们正确的顺序绑定。webpack可以配置定制优化你的代码，拆分vendor/css/js代码用于生产环境，运行一个可以及时部署代码并且页面无刷新的开发服务器，还有许多很酷的功能。
+安">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-webpack2-getting-started" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack 2 实践系列（一） — 安装与入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>源码地址：<a href="https://github.com/silence717/webpack2-demos">https://github.com/silence717/webpack2-demos</a></strong> </p>
+<p>webpack在你的应用中是一个模块打包工具。webpack可以简化工作流，快速构建一个应用程序的依赖关系图，按照它们正确的顺序绑定。webpack可以配置定制优化你的代码，拆分vendor/css/js代码用于生产环境，运行一个可以及时部署代码并且页面无刷新的开发服务器，还有许多很酷的功能。</p>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>开始之前首先你得在本地安装一个新版的nodejs。这是一个比较好的基础。老版本你可能会遇到各种与webpack相关的功能丢失或者缺少一些依赖的包。</p>
+<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack -g</div></pre></td></tr></table></figure>
+<p>安装成功之后，现在<code>webpack</code>命令就在全局生效。<br>然而，这不是一个最佳实践，因为它会锁定到一个特定版本的webpack,你在项目中使用不同版本的可能会失效。</p>
+<h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack --save-dev</div><div class="line">npm install webpack@&lt;version&gt; --save-dev</div></pre></td></tr></table></figure>
+<p>这是一种比较推荐的方法。<br><strong>如果你想运行本地安装的webpack,你可以进入它的bin里面，就像这样 node_modules/.bin/webpack</strong></p>
+<a id="more"></a>
+<h4 id="极端的方式"><a href="#极端的方式" class="headerlink" title="极端的方式"></a>极端的方式</h4><p>如果你对使用最新的webpack有极大的热情(注意 - 可能是不稳定的)，你可以直接安装webpack库使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack/webpack<span class="comment">#&lt;tagname/branchname&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Creating-a-bundle"><a href="#Creating-a-bundle" class="headerlink" title="Creating a bundle"></a>Creating a bundle</h3><p>创建一个demo目录去实践webpack.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir webpack2-demo &amp;&amp; <span class="built_in">cd</span> webpack2-demo</div><div class="line">mkdir demo01-getting-started &amp;&amp; <span class="built_in">cd</span> demo01-getting-started</div><div class="line">npm init -y</div><div class="line">npm install --save-dev webpack</div><div class="line">npm install --save lodash</div></pre></td></tr></table></figure></p>
+<p>现在我们创建一个<code>index.js</code>文件<br><strong>getting-started/src/index.js</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">component</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line"></div><div class="line">  <span class="comment">/* lodash is required for the next line to work */</span></div><div class="line">  element.innerHTML = _.map([<span class="string">'Hello'</span>,<span class="string">'webpack'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> item + <span class="string">' '</span>;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> element;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(component());</div></pre></td></tr></table></figure></p>
+<p>为了运行这段代码，我们创建一个一个html<br><strong>index.html</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Webpack demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/lodash@4.16.6"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/index.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在这栗子中，使用 script 标签引入依赖。<br><code>index.js</code>依赖<code>lodash</code>，所以最最开始引入它。这个里面并没有很直接的表明index.js依赖lodash库，只是使用了lodash的变量 <code>_</code>。</p>
+<p>这种管理javascript项目会存在一些问题：</p>
+<ul>
+<li>如果一个依赖丢失，或者没有按照正确的顺序去引入，应用将不会工作。</li>
+<li>如果一个依赖被引入了，但是从未使用，浏览器就需要加载根本不需要的大段代码。</li>
+</ul>
+<p>为了将lodash依赖关系与index.js捆绑到一起，我们需要导入lodash。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ <span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">component</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  ...</div></pre></td></tr></table></figure></p>
+<p>同样我们需要改变index.html文件只包含一个bundlejs文件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Webpack demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">-   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/lodash@4.16.6"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">-   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/index.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">+   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"dist/bundle.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>现在index.js明确表明依赖lodash，并且将其绑定到_，再也不会产生全局命名污染。</p>
+<p>执行webpack命令，入口文件为index.js，输出bundle.js文件，其中未使用的依赖关系不会打入bundle.js中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">webpack src/index.js dist/bundle.js</div><div class="line">// 输出</div><div class="line">Hash: 73259977daef4d7ca66c</div><div class="line">Version: webpack 2.1.0-beta.28</div><div class="line">Time: 558ms</div><div class="line">    Asset    Size  Chunks                    Chunk Names</div><div class="line">bundle.js  544 kB       0  [emitted]  [big]  main</div><div class="line">   [0] ./src/index.js 371 bytes &#123;0&#125; [built]</div></pre></td></tr></table></figure></p>
+<h3 id="用一个配置文件来使用webpack"><a href="#用一个配置文件来使用webpack" class="headerlink" title="用一个配置文件来使用webpack"></a>用一个配置文件来使用webpack</h3><p><strong>webpack.config.js</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">entry</span>: <span class="string">'./src/index.js'</span>,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>使用webpack运行这个文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">webpack --config webpack.config.js</div><div class="line"><span class="comment">// 输出</span></div><div class="line">Hash: <span class="number">54</span>fb380c0318be007543</div><div class="line">Version: webpack <span class="number">2.1</span><span class="number">.0</span>-beta<span class="number">.28</span></div><div class="line">Time: <span class="number">562</span>ms</div><div class="line">    Asset    Size  Chunks                    Chunk Names</div><div class="line">bundle.js  <span class="number">543</span> kB       <span class="number">0</span>  [emitted]  [big]  main</div><div class="line">   [<span class="number">3</span>] ./src/index.js <span class="number">371</span> bytes &#123;<span class="number">0</span>&#125; [built]</div></pre></td></tr></table></figure></p>
+<p><strong>如果webpack.config.js已经存在，<code>webpack</code>命令会默认选择它</strong><br>配置文件能够灵活使用webpack,添加loaders,插件，解析选项和许多其他增强功能。</p>
+<h3 id="在npm中使用Webpack"><a href="#在npm中使用Webpack" class="headerlink" title="在npm中使用Webpack"></a>在npm中使用Webpack</h3><p>我们在package.json中设置一个快捷方式，运行webpack。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"build"</span>: <span class="string">"webpack"</span></div><div class="line">  &#125;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>现在我们直接运行<code>npm run build</code>命令实现与上面相同的功能。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在这个栗子中，我们了解了webpack的基本概念和配置，之后我们将按照API进一步深入学习Webpack。</p>
+<p>PS：本文完全属于边实践学习边写，会不断更新，希望不对的地方可以及时指出。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/15/webpack2-getting-started/" class="archive-article-date">
+  	<time datetime="2016-12-15T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-15</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack2/">webpack2</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/14/javascript-prototype/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【翻译】javascript-prototype</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="webpack2-getting-started" data-title="webpack 2 实践系列（一） — 安装与入门" data-url="https://github.com/silence717/2016/12/15/webpack2-getting-started/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"silence717"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 杨芳
+    		<span id="busuanzi_container_page_pv">
+			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+			</span>
+    	</div>
+    	<div class="footer-right">
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+		</div>
+	</div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 10px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
