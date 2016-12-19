@@ -147,6 +147,64 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-webpack2-entry-output" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/19/webpack2-entry-output/">webpack 2 实践系列（二）—  entry 和 output</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>源码地址：<a href="https://github.com/silence717/webpack2-demos">https://github.com/silence717/webpack2-demos</a></strong> </p>
+<p>具体可参见 demo02-entry-output 目录下</p>
+<h3 id="Entry-Points"><a href="#Entry-Points" class="headerlink" title="Entry Points"></a>Entry Points</h3><p><code>entry</code>是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。<br>使用方式：entry: string | Array<string></p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出选项告诉webpack如何编写编译后的文件到磁盘。虽然可以有多个入口，但是只要一个输出配置项。<br>下面列举几个最主要的配置属性:</p>
+<h4 id="path"><a href="#path" class="headerlink" title="path"></a>path</h4><p>打包后的输出目录地址，是绝对路径。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">	<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="publicPath"><a href="#publicPath" class="headerlink" title="publicPath"></a>publicPath</h4><p>正在研究当中，目前遇到一个dev和build环境image路径的问题，晚点具体补充。</p>
+<h4 id="fileName"><a href="#fileName" class="headerlink" title="fileName"></a>fileName</h4><p>fileName – 指定输出文件的名称<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">	<span class="attr">filename</span>: <span class="string">'bundle.js'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/12/19/webpack2-entry-output/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/19/webpack2-entry-output/" class="archive-article-date">
+  	<time datetime="2016-12-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-19</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack2/">webpack2</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack2-getting-started" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -560,62 +618,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-creating-crud-app-minutes-angulars-resource" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/creating-crud-app-minutes-angulars-resource/">【翻译】creating-crud-app-minutes-angulars-resource</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文地址：<a href="https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource">https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource</a></p>
-<p>大量的单页应用都有CRUD操作。如果你使用<code>angularjs</code>创建一个CRUD操作，那么你可以利用$resource服务的优势。<code>$resource</code>服务是建立在<code>$http</code>服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。所以，我们一起探索一下<code>$resource</code>,并且在<code>angular</code>中实现CRUD的操作。</p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p><code>$resource</code>服务没有打包到angularjs中。你需要下载一个独立的文件叫<code>angular-resource.js</code>并且把它引入到HTML页面中。这个文件可以从这里下载：<a href="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js">http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js</a>。</p>
-<p>另外，为了使用<code>$resource</code>你需要在主模块中注入<code>ngResource</code>模块。示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'mainApp'</span>,[<span class="string">'ngResource'</span>]); <span class="comment">//mainApp is our main module</span></div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/09/28/creating-crud-app-minutes-angulars-resource/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/28/creating-crud-app-minutes-angulars-resource/" class="archive-article-date">
-  	<time datetime="2016-09-28T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-28</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-resource/">angular-resource</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -686,7 +688,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 10px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

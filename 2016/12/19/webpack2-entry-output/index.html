@@ -16,30 +16,27 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/silence717">
-  <title>webpack实践笔记总结 | 背包客在前端路上爬行</title>
+  <title>webpack 2 实践系列（二）—  entry 和 output | 背包客在前端路上爬行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="loaders需要单独安装并且在config文件中的modules下进行配置，配置参数有：
-test：匹配loaders处理的文件的拓展名的正则表达式（必须）
-loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。
-include：必须处理的文件（文件夹）（可选）
-exclud">
+  <meta name="description" content="源码地址：https://github.com/silence717/webpack2-demos 
+具体可参见 demo02-entry-output 目录下
+Entry Pointsentry是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。使用方式：entry: string | Array
+Output输出选项告诉webpack如何编写编译后的文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack实践笔记总结">
-<meta property="og:url" content="https://github.com/silence717/2016/09/20/webpack-conclusion/index.html">
+<meta property="og:title" content="webpack 2 实践系列（二）—  entry 和 output">
+<meta property="og:url" content="https://github.com/silence717/2016/12/19/webpack2-entry-output/index.html">
 <meta property="og:site_name" content="背包客在前端路上爬行">
-<meta property="og:description" content="loaders需要单独安装并且在config文件中的modules下进行配置，配置参数有：
-test：匹配loaders处理的文件的拓展名的正则表达式（必须）
-loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。
-include：必须处理的文件（文件夹）（可选）
-exclud">
-<meta property="og:updated_time" content="2016-11-21T14:08:16.000Z">
+<meta property="og:description" content="源码地址：https://github.com/silence717/webpack2-demos 
+具体可参见 demo02-entry-output 目录下
+Entry Pointsentry是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。使用方式：entry: string | Array
+Output输出选项告诉webpack如何编写编译后的文">
+<meta property="og:updated_time" content="2016-12-19T14:59:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack实践笔记总结">
-<meta name="twitter:description" content="loaders需要单独安装并且在config文件中的modules下进行配置，配置参数有：
-test：匹配loaders处理的文件的拓展名的正则表达式（必须）
-loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。
-include：必须处理的文件（文件夹）（可选）
-exclud">
+<meta name="twitter:title" content="webpack 2 实践系列（二）—  entry 和 output">
+<meta name="twitter:description" content="源码地址：https://github.com/silence717/webpack2-demos 
+具体可参见 demo02-entry-output 目录下
+Entry Pointsentry是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。使用方式：entry: string | Array
+Output输出选项告诉webpack如何编写编译后的文">
   
     <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
   
@@ -158,7 +155,7 @@ exclud">
 </nav>
 
       <div class="body-wrap">
-        <article id="post-webpack-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-webpack2-entry-output" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -168,7 +165,7 @@ exclud">
         
   
     <h1 class="article-title" itemprop="name">
-      webpack实践笔记总结
+      webpack 2 实践系列（二）—  entry 和 output
     </h1>
   
 
@@ -176,39 +173,37 @@ exclud">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h4><h5 id="需要单独安装并且在config文件中的modules下进行配置，配置参数有："><a href="#需要单独安装并且在config文件中的modules下进行配置，配置参数有：" class="headerlink" title="需要单独安装并且在config文件中的modules下进行配置，配置参数有："></a>需要单独安装并且在config文件中的modules下进行配置，配置参数有：</h5><ul>
-<li>test：匹配loaders处理的文件的拓展名的正则表达式（必须）</li>
-<li>loader：loader的名称（必须），loader 一般以 xxx-loader 的方式命名，xxx 代表了这个 loader 要做的转换功能，比如 css-loader。</li>
-<li>include：必须处理的文件（文件夹）（可选）</li>
-<li>exclude: 屏蔽不需要处理的文件（文件夹）（可选）</li>
-<li>query：为loaders提供额外的设置选项（可选)</li>
-</ul>
-<h5 id="css-loader-和-style-loader区别"><a href="#css-loader-和-style-loader区别" class="headerlink" title="css-loader 和 style-loader区别"></a>css-loader 和 style-loader区别</h5><ul>
-<li>css-loader实现读取功能</li>
-<li>style-loader将所有的计算后的样式加入页面中</li>
-<li>二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 感叹号的作用在于使同一文件能够使用不同类型的loader</span></div><div class="line">...</div></pre></td></tr></table></figure>
+        <p><strong>源码地址：<a href="https://github.com/silence717/webpack2-demos">https://github.com/silence717/webpack2-demos</a></strong> </p>
+<p>具体可参见 demo02-entry-output 目录下</p>
+<h3 id="Entry-Points"><a href="#Entry-Points" class="headerlink" title="Entry Points"></a>Entry Points</h3><p><code>entry</code>是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。<br>使用方式：entry: string | Array<string></string></p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出选项告诉webpack如何编写编译后的文件到磁盘。虽然可以有多个入口，但是只要一个输出配置项。<br>下面列举几个最主要的配置属性:</p>
+<h4 id="path"><a href="#path" class="headerlink" title="path"></a>path</h4><p>打包后的输出目录地址，是绝对路径。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">	<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="publicPath"><a href="#publicPath" class="headerlink" title="publicPath"></a>publicPath</h4><p>正在研究当中，目前遇到一个dev和build环境image路径的问题，晚点具体补充。</p>
+<h4 id="fileName"><a href="#fileName" class="headerlink" title="fileName"></a>fileName</h4><p>fileName – 指定输出文件的名称<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">	<span class="attr">filename</span>: <span class="string">'bundle.js'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h4 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h4><p>loaders和plugins是完全不同的东西，loaders是在打包构建过程中用来处理源文件的（js，scss，less..），一次处理一个，<br>插件并不直接操作单个文件，它直接对整个构建过程其作用。</p>
-<h5 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title="HtmlWebpackPlugin"></a>HtmlWebpackPlugin</h5><p>依据一个简单的模板，生成最终的html文件，这个文件中自动引用了你打包后的js文件。<br>每次编译都在文件名中插入一个不同的哈希值。</p>
-<h5 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h5><p>Hot Module Replacement允许你在修改组件代码后，自动刷新实时预览修改后的效果。<br>在webpack中实现HMR也很简单，只需要做两项配置:</p>
+<h3 id="单个entry和-output-配置"><a href="#单个entry和-output-配置" class="headerlink" title="单个entry和 output 配置"></a>单个entry和 output 配置</h3><p><strong>webpacl.config.js</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports  = &#123;</div><div class="line">	<span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>如果能够保证当前项目只有一个入口，我们还可以简写为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">entry</span>: &#123;</div><div class="line">		<span class="attr">main</span>: <span class="string">'./index.js'</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>单个入口配置参照： demo02-entry-output/single 目录下</p>
+<h4 id="多个entry-和对于-ouput"><a href="#多个entry-和对于-ouput" class="headerlink" title="多个entry 和对于 ouput"></a>多个entry 和对于 ouput</h4><p>如果我们配置了多个入口那么应该使用提花布，确保每个文件有一个唯一的名称：</p>
 <ul>
-<li>在webpack配置文件中添加HMR插件</li>
-<li>在Webpack Dev Server中添加“hot”参数</li>
+<li>[name] is replaced by the name of the chunk.  </li>
+<li>[hash] is replaced by the hash of the compilation.  </li>
+<li>[chunkhash] is replaced by the hash of the chunk.<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">entry</span>: &#123;</div><div class="line">		<span class="attr">indexOne</span>: <span class="string">'./indexOne.js'</span>,</div><div class="line">		<span class="attr">indexTwo</span>: <span class="string">'./indexTwo.js'</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="comment">// filename: '[hash].bundle.js',</span></div><div class="line">		filename: <span class="string">'[name].bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">    <span class="attr">hot</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">inline</span>: <span class="literal">true</span></div><div class="line">&#125;,</div><div class="line"><span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">template</span>: __dirname + <span class="string">"/app/index.html"</span></div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</div><div class="line">  ],</div></pre></td></tr></table></figure>
+<p>多个入口配置参照： demo02-entry-output/multi 目录下</p>
+
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/09/20/webpack-conclusion/" class="archive-article-date">
-  	<time datetime="2016-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-20</time>
+      <a href="/2016/12/19/webpack2-entry-output/" class="archive-article-date">
+  	<time datetime="2016-12-19T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-19</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack2/">webpack2</a></li></ul>
 	</div>
 
       
@@ -221,18 +216,9 @@ exclud">
   
 <nav id="article-nav">
   
-    <a href="/2016/09/28/creating-crud-app-minutes-angulars-resource/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【翻译】creating-crud-app-minutes-angulars-resource
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/19/webpack-loaders/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">webpack实践笔记添加loaders</div>
+    <a href="/2016/12/15/webpack2-getting-started/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack 2 实践系列（一） — 安装与入门</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -247,7 +233,7 @@ exclud">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="webpack-conclusion" data-title="webpack实践笔记总结" data-url="https://github.com/silence717/2016/09/20/webpack-conclusion/"></div>
+	<div class="ds-thread" data-thread-key="webpack2-entry-output" data-title="webpack 2 实践系列（二）—  entry 和 output" data-url="https://github.com/silence717/2016/12/19/webpack2-entry-output/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

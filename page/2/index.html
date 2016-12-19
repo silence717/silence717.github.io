@@ -147,6 +147,62 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-creating-crud-app-minutes-angulars-resource" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/28/creating-crud-app-minutes-angulars-resource/">【翻译】creating-crud-app-minutes-angulars-resource</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource">https://www.sitepoint.com/creating-crud-app-minutes-angulars-resource</a></p>
+<p>大量的单页应用都有CRUD操作。如果你使用<code>angularjs</code>创建一个CRUD操作，那么你可以利用$resource服务的优势。<code>$resource</code>服务是建立在<code>$http</code>服务之上，并且可以使前后端用RESTful标准进行交互变得简单的一个factory。所以，我们一起探索一下<code>$resource</code>,并且在<code>angular</code>中实现CRUD的操作。</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p><code>$resource</code>服务没有打包到angularjs中。你需要下载一个独立的文件叫<code>angular-resource.js</code>并且把它引入到HTML页面中。这个文件可以从这里下载：<a href="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js">http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js</a>。</p>
+<p>另外，为了使用<code>$resource</code>你需要在主模块中注入<code>ngResource</code>模块。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'mainApp'</span>,[<span class="string">'ngResource'</span>]); <span class="comment">//mainApp is our main module</span></div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/09/28/creating-crud-app-minutes-angulars-resource/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/28/creating-crud-app-minutes-angulars-resource/" class="archive-article-date">
+  	<time datetime="2016-09-28T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-28</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-resource/">angular-resource</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -565,63 +621,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-angular-ui-router" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/02/angular-ui-router/">angular-ui-router使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="github源码地址：https-github-com-angular-ui-ui-router"><a href="#github源码地址：https-github-com-angular-ui-ui-router" class="headerlink" title="github源码地址：https://github.com/angular-ui/ui-router"></a>github源码地址：<a href="https://github.com/angular-ui/ui-router">https://github.com/angular-ui/ui-router</a></h3><h3 id="api地址-http-angular-ui-github-io-ui-router-site"><a href="#api地址-http-angular-ui-github-io-ui-router-site" class="headerlink" title="api地址 http://angular-ui.github.io/ui-router/site"></a>api地址 <a href="http://angular-ui.github.io/ui-router/site">http://angular-ui.github.io/ui-router/site</a></h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save angular-ui-router</div></pre></td></tr></table></figure>
-<h3 id="使用angular-ui-router"><a href="#使用angular-ui-router" class="headerlink" title="使用angular-ui-router"></a>使用angular-ui-router</h3><p>备注： 以下所有示例代码来源于个人所写的练习.</p>
-<p>地址为：<a href="https://github.com/silence717/angular-webpack-demo">https://github.com/silence717/angular-webpack-demo</a></p>
-<h5 id="导入angular-ui-router"><a href="#导入angular-ui-router" class="headerlink" title="导入angular-ui-router"></a>导入angular-ui-router</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> uiRouter <span class="keyword">from</span> <span class="string">'angular-ui-router'</span>;</div></pre></td></tr></table></figure>
-<h5 id="在angular-module中注入angular-ui-router"><a href="#在angular-module中注入angular-ui-router" class="headerlink" title="在angular.module中注入angular-ui-router"></a>在angular.module中注入angular-ui-router</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>,[uiRouter]);</div></pre></td></tr></table></figure>
-<h5 id="为了方便使用，将-state与-stateParams全部挂载到-rootScope，在angular-module中初始化"><a href="#为了方便使用，将-state与-stateParams全部挂载到-rootScope，在angular-module中初始化" class="headerlink" title="为了方便使用，将$state与$stateParams全部挂载到$rootScope，在angular.module中初始化"></a>为了方便使用，将$state与$stateParams全部挂载到$rootScope，在angular.module中初始化</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">runBlock</span>(<span class="params">$rootScope, $state, $stateParams</span>) </span>&#123;</div><div class="line">	<span class="string">'ngInject'</span>;</div><div class="line"></div><div class="line">	$rootScope.$state = $state;</div><div class="line">	$rootScope.$stateParams = $stateParams;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/06/02/angular-ui-router/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/06/02/angular-ui-router/" class="archive-article-date">
-  	<time datetime="2016-06-02T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-ui-router/">angular-ui-router</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -692,7 +691,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 17.5px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 10px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     
