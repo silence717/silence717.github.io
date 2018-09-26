@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>javascript小知识点 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="变量赋值变量赋值分为两个动作：
+
+如果当前没有声明过，那编译器会在当前作用域声明一个。
+运行时引擎会在作用域查找该变量，如果找到就对其赋值。
+
+查询有：LHS查询和RHS查询。LHS：赋值操作的目标是谁。RHS：谁是赋值操作的源头，restrieve his source value(取到它的源值)。举个栗子：1234// RHS引用，取到a的值。console.log(a);// LHS引用，只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript小知识点">
+<meta property="og:url" content="https://github.com/silence717/2017/11/17/javascript_little/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="变量赋值变量赋值分为两个动作：
+
+如果当前没有声明过，那编译器会在当前作用域声明一个。
+运行时引擎会在作用域查找该变量，如果找到就对其赋值。
+
+查询有：LHS查询和RHS查询。LHS：赋值操作的目标是谁。RHS：谁是赋值操作的源头，restrieve his source value(取到它的源值)。举个栗子：1234// RHS引用，取到a的值。console.log(a);// LHS引用，只">
+<meta property="og:updated_time" content="2017-11-17T09:25:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript小知识点">
+<meta name="twitter:description" content="变量赋值变量赋值分为两个动作：
+
+如果当前没有声明过，那编译器会在当前作用域声明一个。
+运行时引擎会在作用域查找该变量，如果找到就对其赋值。
+
+查询有：LHS查询和RHS查询。LHS：赋值操作的目标是谁。RHS：谁是赋值操作的源头，restrieve his source value(取到它的源值)。举个栗子：1234// RHS引用，取到a的值。console.log(a);// LHS引用，只">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-javascript_little" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript小知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h4><p>变量赋值分为两个动作：</p>
+<ol>
+<li>如果当前没有声明过，那编译器会在当前作用域声明一个。</li>
+<li>运行时引擎会在作用域查找该变量，如果找到就对其赋值。</li>
+</ol>
+<p>查询有：LHS查询和RHS查询。<br><code>LHS</code>：赋值操作的目标是谁。<br><code>RHS</code>：谁是赋值操作的源头，restrieve his source value(取到它的源值)。<br>举个栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// RHS引用，取到a的值。</span></div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="comment">// LHS引用，只需要对=2这个赋值操作找到一个目标</span></div><div class="line">a = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<p>查看下面这个函数分别有几次LHS和RHS？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = a;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> c = foo(<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<p>其中有3次LHS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c = foo(2)</div><div class="line">a = 2</div><div class="line">b =a</div></pre></td></tr></table></figure></p>
+<p>4次RHS：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foo</div><div class="line">a //因为要把a的值赋给b</div><div class="line">a+b中的a和别分别一次</div></pre></td></tr></table></figure></p>
+<h4 id="函数表达式和函数声明简单区分"><a href="#函数表达式和函数声明简单区分" class="headerlink" title="函数表达式和函数声明简单区分"></a>函数表达式和函数声明简单区分</h4><p>使用关键字<code>function</code>来判断是否为第一词来区分，如果是为函数声明，如果不是那么就是函数表达式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数表达式</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">xxx</span>(<span class="params"></span>)</span>&#123;&#125;)();</div><div class="line"><span class="comment">// 函数声明</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">xxx</span>(<span class="params"></span>)</span></div></pre></td></tr></table></figure></p>
+<h4 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h4><p>IIFE: Immediately Invoked Function Expression（立即执行函数表达式）。</p>
+<h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4><p>所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程称为“提升”。</p>
+<p>函数声明会被提前到普通变量之前，如果存在同名的函数，后面的函数声明会覆盖前面的。</p>
+<p>所有的变量都是先有声明，再有赋值。栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"><span class="comment">// 第一步为编译阶段任务</span></div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="comment">// 第二步执行阶段任务</span></div><div class="line">a = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<h4 id="如何判断this"><a href="#如何判断this" class="headerlink" title="如何判断this"></a>如何判断this</h4><ol>
+<li>函数是否在new中调用？如果是，<code>this</code>绑定的是新创建的对象。</li>
+<li>函数是否通过call、apply或者硬绑定？如果是，<code>this</code>绑定的是指定的对象。</li>
+<li>函数是否在某个上下文中调用？如果是，<code>this</code>绑定上下文对象。</li>
+<li>如果都不是，使用默认绑定。严格模式绑定到<code>undefined</code>，否则为全局对象。</li>
+<li>foo.call(null) 使用默认绑定规则。</li>
+<li>箭头函数的绑定是无法被修改的（不适用于前4条规则），继承外层函数调用的<code>this</code>绑定。</li>
+</ol>
+<h4 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h4><ol>
+<li>writeable：属性的值是否可以修改。</li>
+<li>configable：属性的值可配置。如果是可以配置的，那么就可以使用<code>defineProperty()</code>方法来修改属性描述符。这种设置为单向，不可取消。意思是可以从<code>true</code>到false，但是不能从<code>false</code>到<code>true</code>。如果值为<code>false</code>则禁止删除这个属性。</li>
+<li>enumerable:是否为可枚举的。如果是<code>false</code>那么在使用<code>for...in</code>的时候不会出现。</li>
+</ol>
+<p>PS：今天看到随手写在本子上的，整理写下来，以备查看。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/11/17/javascript_little/" class="archive-article-date">
+  	<time datetime="2017-11-17T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-11-17</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/26/refactor-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端项目重构总结（2）-前后端分离
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/19/webpack2-entry-output/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack 2 实践系列（二）—  entry 和 output</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript_little" data-title="javascript小知识点" data-url="https://github.com/silence717/2017/11/17/javascript_little/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"silence717"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 杨芳
+    		<span id="busuanzi_container_page_pv">
+			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+			</span>
+    	</div>
+    	<div class="footer-right">
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+		</div>
+	</div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/refactor/" style="font-size: 16px;">refactor</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

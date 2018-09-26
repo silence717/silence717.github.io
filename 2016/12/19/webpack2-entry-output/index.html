@@ -30,7 +30,7 @@ Output输出选项告诉webpack如何编写编译后的文">
 具体可参见 demo02-entry-output 目录下
 Entry Pointsentry是webpack配置的入口文件的属性，也是整个项目的主入口，其余依赖的模块均在这个文件中引入。使用方式：entry: string | Array
 Output输出选项告诉webpack如何编写编译后的文">
-<meta property="og:updated_time" content="2016-12-19T14:59:24.000Z">
+<meta property="og:updated_time" content="2016-12-19T15:00:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack 2 实践系列（二）—  entry 和 output">
 <meta name="twitter:description" content="源码地址：https://github.com/silence717/webpack2-demos 
@@ -184,7 +184,7 @@ Output输出选项告诉webpack如何编写编译后的文">
 <h3 id="单个entry和-output-配置"><a href="#单个entry和-output-配置" class="headerlink" title="单个entry和 output 配置"></a>单个entry和 output 配置</h3><p><strong>webpacl.config.js</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports  = &#123;</div><div class="line">	<span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>如果能够保证当前项目只有一个入口，我们还可以简写为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">entry</span>: &#123;</div><div class="line">		<span class="attr">main</span>: <span class="string">'./index.js'</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">output</span>: &#123;</div><div class="line">		<span class="attr">filename</span>: <span class="string">'bundle.js'</span>,</div><div class="line">		<span class="attr">path</span>: __dirname + <span class="string">'/'</span></div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>单个入口配置参照： demo02-entry-output/single 目录下</p>
-<h4 id="多个entry-和对于-ouput"><a href="#多个entry-和对于-ouput" class="headerlink" title="多个entry 和对于 ouput"></a>多个entry 和对于 ouput</h4><p>如果我们配置了多个入口那么应该使用提花布，确保每个文件有一个唯一的名称：</p>
+<h4 id="多个entry-和对于-output"><a href="#多个entry-和对于-output" class="headerlink" title="多个entry 和对于 output"></a>多个entry 和对于 output</h4><p>如果我们配置了多个入口那么应该使用提花布，确保每个文件有一个唯一的名称：</p>
 <ul>
 <li>[name] is replaced by the name of the chunk.  </li>
 <li>[hash] is replaced by the hash of the compilation.  </li>
@@ -215,6 +215,15 @@ Output输出选项告诉webpack如何编写编译后的文">
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/11/17/javascript_little/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javascript小知识点
+        
+      </div>
+    </a>
   
   
     <a href="/2016/12/15/webpack2-getting-started/" id="article-nav-older" class="article-nav-link-wrap">
@@ -259,7 +268,7 @@ Output输出选项告诉webpack如何编写编译后的文">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 杨芳
+    		&copy; 2018 杨芳
     		<span id="busuanzi_container_page_pv">
 			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
 			</span>
@@ -317,7 +326,7 @@ Output输出选项告诉webpack如何编写编译后的文">
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/refactor/" style="font-size: 16px;">refactor</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     

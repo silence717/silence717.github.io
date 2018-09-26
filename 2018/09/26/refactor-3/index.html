@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>前端项目重构总结（3）-画布流程图重构 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么从这里开始？架构师同学问我的时候，我说从流程画布开始，因为这是我们最重要模块的主要核心。线上用户对于流程图的吐槽和需求是最多的，如果把它放到后面，只怕重构这个事情推动到最后，整个人会处于一个比较疲惫的状态，不会再有这么大的心劲。事实证明：这是我做的最正确，最刺激的一个决定。
+
+架构设计是由我们架构师所做，我只是搬砖到这里。
+
+老系统技术JQuery + mxGraph 
+新架构设计angul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端项目重构总结（3）-画布流程图重构">
+<meta property="og:url" content="https://github.com/silence717/2018/09/26/refactor-3/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="为什么从这里开始？架构师同学问我的时候，我说从流程画布开始，因为这是我们最重要模块的主要核心。线上用户对于流程图的吐槽和需求是最多的，如果把它放到后面，只怕重构这个事情推动到最后，整个人会处于一个比较疲惫的状态，不会再有这么大的心劲。事实证明：这是我做的最正确，最刺激的一个决定。
+
+架构设计是由我们架构师所做，我只是搬砖到这里。
+
+老系统技术JQuery + mxGraph 
+新架构设计angul">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944090667-2a59ef03-bab1-4864-975e-4f73716b4ab2.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944277274-65d4f629-d0e5-4921-91f5-75b4a5e7cb4f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2018/png/164495/1537945650619-4ac214d4-27cc-42bf-8cd2-7030feffb386.png">
+<meta property="og:updated_time" content="2018-09-26T09:08:16.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端项目重构总结（3）-画布流程图重构">
+<meta name="twitter:description" content="为什么从这里开始？架构师同学问我的时候，我说从流程画布开始，因为这是我们最重要模块的主要核心。线上用户对于流程图的吐槽和需求是最多的，如果把它放到后面，只怕重构这个事情推动到最后，整个人会处于一个比较疲惫的状态，不会再有这么大的心劲。事实证明：这是我做的最正确，最刺激的一个决定。
+
+架构设计是由我们架构师所做，我只是搬砖到这里。
+
+老系统技术JQuery + mxGraph 
+新架构设计angul">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944090667-2a59ef03-bab1-4864-975e-4f73716b4ab2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-refactor-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端项目重构总结（3）-画布流程图重构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么从这里开始？架构师同学问我的时候，我说从流程画布开始，因为这是我们最重要模块的主要核心。线上用户对于流程图的吐槽和需求是最多的，如果把它放到后面，只怕重构这个事情推动到最后，整个人会处于一个比较疲惫的状态，不会再有这么大的心劲。事实证明：这是我做的最正确，最刺激的一个决定。</p>
+<blockquote>
+<p>架构设计是由我们架构师所做，我只是搬砖到这里。</p>
+</blockquote>
+<h2 id="老系统技术"><a href="#老系统技术" class="headerlink" title="老系统技术"></a>老系统技术</h2><p>JQuery + mxGraph </p>
+<h2 id="新架构设计"><a href="#新架构设计" class="headerlink" title="新架构设计"></a>新架构设计</h2><p>angularjs + gojs + mobx + mmlpx + typescript (按字母顺序排名)</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>提供一个可复用的流程图组件，且组件结构自顶向下拆解后能保证每一部分独立且简单易用。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>用函数的方式表示，流程图组件架构大概如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> flowDiagram = workspace(createDiagram(flowchart(flowLoader(id))), createPalette(palette(repeatNodeGroup(paletteLoader()))))</div></pre></td></tr></table></figure>
+<h4 id="组织架构"><a href="#组织架构" class="headerlink" title="组织架构"></a><a href="https://www.processon.com/view/link/59e6b6eae4b06e04d963329e" target="_blank" rel="external">组织架构</a></h4><p>顶层 <code>workspace</code> 作为容器组件，与<a href="https://github.com/mmlpxjs/mmlpx"> mmlpx</a> 组件建立数据关联，通过 <code>props</code> 将数据分发至下层的展示型组件。</p>
+<p>展示型组件与容器组件之间的交互遵循 <code>props down, events up</code>  原则。</p>
+<p>画布及节点调色板调用 canvas 库绘图（目前是 gojs ），理论上这一层需要做到可替换。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944090667-2a59ef03-bab1-4864-975e-4f73716b4ab2.png" alt="architecture.png | center | 594x459"></p>
+<h4 id="mmlpx-架构"><a href="#mmlpx-架构" class="headerlink" title="mmlpx 架构"></a><a href="https://github.com/mmlpxjs/mmlpx">mmlpx</a> 架构</h4><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944277274-65d4f629-d0e5-4921-91f5-75b4a5e7cb4f.png" alt="mmlpx.png | center | 598x690"></h4><h2 id="重重困难"><a href="#重重困难" class="headerlink" title="重重困难"></a>重重困难</h2><ul>
+<li>typescript + AngularJs1.x + mobx 全新技术组合方式的适应与开发。</li>
+<li>开发人力只有架构师同学加我，人力严重不足，开发工作量巨大。</li>
+<li>对于业务了解的不够深入，很多逻辑无从得知，只能翻看老代码，严重影响开发进度。</li>
+<li>后端api接口相当不合理，里面为了适配，做了层层的数据转换（其实这是可以预见的，前端这么烂，后端又能好到哪里去）。</li>
+<li>产品经理支持力度不够，对于不合理的设计还要保持线上，争吵无数。</li>
+<li>与老系统的融合，遇到了很多意想不到的坑，添加适配。</li>
+<li>灰度上线，部分用户不习惯新版本，要求回退（这对于我们打击不小）。可能和我们的2B的项目有关，很多用户已经习惯了老版本的东西，不愿意接受新的事物。</li>
+</ul>
+<h2 id="开发时间"><a href="#开发时间" class="headerlink" title="开发时间"></a>开发时间</h2><p>2个人，从开发到上线，经历了3个月吧。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>在灰度发布上线之后，1000多家客户，有7家执意使用老版本，就因为小小功能的变更，这也充分说明用户习惯的问题，不要随便去更改一个用户已经完全习惯了的产品设计。收到这些反馈之后，我们又开始了二轮画布优化的开发，开发到上线差不多一个月，最终让客户完全接受了我们新版本的功能，也收到一些正向的反馈，实在是为之开心。</p>
+<p>这是咨询我们的运营同学，在优化版本上线以后，有没有用户要求回退，或者有没有什么吐槽的点：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537945650619-4ac214d4-27cc-42bf-8cd2-7030feffb386.png" alt="result.png | center | 393x306"></p>
+<p>是不是有一种开心的感觉？<br>得到这个讯息之后，我便可以安心的开始下一步的重构了。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-3/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/26/refactor-4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端项目重构总结（4）-节点重构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/26/refactor-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端项目重构总结（2）-前后端分离</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="refactor-3" data-title="前端项目重构总结（3）-画布流程图重构" data-url="https://github.com/silence717/2018/09/26/refactor-3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"silence717"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 杨芳
+    		<span id="busuanzi_container_page_pv">
+			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+			</span>
+    	</div>
+    	<div class="footer-right">
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+		</div>
+	</div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/refactor/" style="font-size: 16px;">refactor</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

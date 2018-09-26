@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0ee03463ea90339e596b478dba31a669";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://github.com/silence717">
+  <title>前端项目重构总结（4）-节点重构 | 背包客在前端路上爬行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我们的线上跑着大大小小40个节点，有的单一节点代码量达到3k+行，实在是乱的令人发指，重复的代码随处可见，肉眼所及之处看到很多ctrl+c/v过来的代码，这种代码既不敢删除，也不敢随意改动，生怕会影响到其他地方。真正应了那句：祖传代码，请勿随意改动！
+技术架构：AngularJs1.x + es2015 + webpack
+Why?
+肯定会有同学鄙视，Angular都发布6了，你们还在使用1，真是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端项目重构总结（4）-节点重构">
+<meta property="og:url" content="https://github.com/silence717/2018/09/26/refactor-4/index.html">
+<meta property="og:site_name" content="背包客在前端路上爬行">
+<meta property="og:description" content="我们的线上跑着大大小小40个节点，有的单一节点代码量达到3k+行，实在是乱的令人发指，重复的代码随处可见，肉眼所及之处看到很多ctrl+c/v过来的代码，这种代码既不敢删除，也不敢随意改动，生怕会影响到其他地方。真正应了那句：祖传代码，请勿随意改动！
+技术架构：AngularJs1.x + es2015 + webpack
+Why?
+肯定会有同学鄙视，Angular都发布6了，你们还在使用1，真是">
+<meta property="og:updated_time" content="2018-09-26T09:08:26.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端项目重构总结（4）-节点重构">
+<meta name="twitter:description" content="我们的线上跑着大大小小40个节点，有的单一节点代码量达到3k+行，实在是乱的令人发指，重复的代码随处可见，肉眼所及之处看到很多ctrl+c/v过来的代码，这种代码既不敢删除，也不敢随意改动，生怕会影响到其他地方。真正应了那句：祖传代码，请勿随意改动！
+技术架构：AngularJs1.x + es2015 + webpack
+Why?
+肯定会有同学鄙视，Angular都发布6了，你们还在使用1，真是">
+  
+    <link rel="alternative" href="/atom.xml" title="背包客在前端路上爬行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">杨芳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">杨芳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars3.githubusercontent.com/u/8267830?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">杨芳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的吃货！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/silence717" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/laoyang518" title="weibo">weibo</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/silence717" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-refactor-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端项目重构总结（4）-节点重构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们的线上跑着大大小小40个节点，有的单一节点代码量达到3k+行，实在是乱的令人发指，重复的代码随处可见，肉眼所及之处看到很多<code>ctrl+c/v</code>过来的代码，这种代码既不敢删除，也不敢随意改动，生怕会影响到其他地方。真正应了那句：祖传代码，请勿随意改动！</p>
+<h2 id="技术架构："><a href="#技术架构：" class="headerlink" title="技术架构："></a>技术架构：</h2><p>AngularJs1.x + es2015 + webpack</p>
+<h3 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h3><blockquote>
+<p>肯定会有同学鄙视，Angular都发布6了，你们还在使用1，真是low。只能说很无奈，我们也想过使用更新的、更流行的技术。</p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><p>节点部分全部为表单设计，所做的事情就是添加表单，验证合法性，提交给后端保存数据。但是我对于 React 的认识比较浅显，认为它不适合做这样大批量的表单业务场景，因此放弃。</p>
+</blockquote>
+<h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><p>这几年 Vue 火的真是一塌糊涂，我也想在项目中去尝试一下，但是选择 Vue 代表着所有的组件全部得自己编写，或者在市面上流行的 Vue 组件再包一层，符合我们的UI风格。</p>
+<h4 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h4><p>当然最终还是选择了Angular1.x来进行开发。原因有以下几点：</p>
+<ul>
+<li>公司目前web端的系统都是Angular1.x来编写。</li>
+<li>使用它可以很快拉来新的开发，大家对于技术栈比较熟悉，上手快。</li>
+<li>目前公司提供的组件库是基于 Angular1.x而编写的，可直接使用，和其余模块UI完全一致。</li>
+<li>重构时间问题。</li>
+</ul>
+<h2 id="编码风格"><a href="#编码风格" class="headerlink" title="编码风格"></a>编码风格</h2><p>不想再罗列这些文字，直接看链接：<a href="https://github.com/kuitos/kuitos.github.io/issues/34">https://github.com/kuitos/kuitos.github.io/issues/34</a></p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">src </div><div class="line">    nodes   // 节点集合</div><div class="line">        xxx  // 单一节点</div><div class="line">            index.js           // 入口文件</div><div class="line">            body.url.html      // 模板文件</div><div class="line">            footer.url.html    // 所有节点均以弹框形式展现，此为弹框底部模板</div><div class="line">            index.scss         // css</div><div class="line">            loader.js          // 与后端交互的 api </div><div class="line">            Controller.js      // 业务逻辑</div><div class="line">            mock.js            // 模拟数据</div><div class="line">    </div><div class="line">    common  // 公共的一些服务之类，包含utils，interceptor,decorator等        </div><div class="line">	components // 公共组件</div><div class="line">	    styles // 基础的css文件</div><div class="line">	        base.scss         // 基本css，其中覆盖组件库的一些特定样式</div><div class="line">	        mixin.scss        // 带变量公共css</div><div class="line">	        placeholder.scss  // 不带变量的公共css</div><div class="line">	        variables.scss    // 项目中经常使用的字体、大小、颜色常量</div><div class="line">	        </div><div class="line">	config.js   // app初始化配置</div><div class="line">	index.js    // app入口</div><div class="line">build  // 打包配置</div><div class="line">    config.js        // 配置打包输出</div><div class="line">    webpack.base.js  // webpack基本配置</div><div class="line">    webpack.dev.js   // webpack开发模式</div><div class="line">    webpack.prod.js  // webpack生产环境</div><div class="line">.editorconfig  // 编辑器设置</div><div class="line">.gitlab-ci.yml  // gitlab ci 任务配置</div><div class="line">package.json</div></pre></td></tr></table></figure>
+<h2 id="代码Review"><a href="#代码Review" class="headerlink" title="代码Review"></a>代码Review</h2><p>由于架构师同学的撤出，我们新加入了3个同学来帮忙进行重构。人多了，虽然项目中也设置了 eslint 校验，但是很多编码习惯是无法限制的，因此我也简单的制定了一个代码Review Check List，要求大家在提交代码之前做一下检查，避免一些不必要的时间浪费。毕竟组织这些人在一起进行 code review 还是比较花费时间的，因此大家需要一些统一的标准（check list 后面一篇文档单独贴出来）。</p>
+<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>重构的工作量是巨大的，繁杂的，时间久了难免会让人产生厌倦的心里，作为我重构的主导者，所以我制定了一个分享的机制，每周五下午由一个同学进行分享，时间控制在半个小时到一个小时之间，可以讲一个很小的点，让大家讨论起来，每个人在这一个小时之内放松一下，也有所收获。目前看起来执行的还不错，希望能够继续保持下去！</p>
+<h2 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h2><ul>
+<li>业务，还是对于业务的不熟悉，这是最大的问题。</li>
+<li>api交互，接口的不合理性让人分分钟想骂街。</li>
+</ul>
+<h2 id="提高"><a href="#提高" class="headerlink" title="提高"></a>提高</h2><ul>
+<li>之前有4名同学一起开发，现在还有3个，目前还剩下10个节点所有都要开发完成啦。</li>
+<li>这次我们换了产品经理，她虽然也不熟悉，但是她会去学习，和听取建议啦。</li>
+</ul>
+<h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>目前已经进行了3个月，正处于开发、测试、上线的过程中，尤其是等待测试的节点很多。等到彻底结束后再做总结。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>结果是未知的，自我感觉还是不错的，等待国庆结束后的第一波上线，接受用户的反馈结果。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-4/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/26/refactor-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端项目重构总结(1) - 前世由来
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/26/refactor-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端项目重构总结（3）-画布流程图重构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="refactor-4" data-title="前端项目重构总结（4）-节点重构" data-url="https://github.com/silence717/2018/09/26/refactor-4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"silence717"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 杨芳
+    		<span id="busuanzi_container_page_pv">
+			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+			</span>
+    	</div>
+    	<div class="footer-right">
+		<span id="busuanzi_container_site_pv">
+		    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+		</div>
+	</div>
+  </div>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/refactor/" style="font-size: 16px;">refactor</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">杨芳&lt;br&gt;前端一枚&lt;br&gt;背包客，热爱旅行，喜欢摄影&lt;br&gt;轻微洁癖，强迫症，电话恐惧症患者!</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -147,6 +147,369 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-refactor-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/26/refactor-1/">前端项目重构总结(1) - 前世由来</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>2017年4月公司组织结构变动，这个祖传的代码要交接到我这里，因为是公司最赚钱的产品之一，我怀着忐忑和无比敬畏的心情就开始了我的交接之旅，真的是没想到，惊喜成为了惊吓。</p>
+<p>首先在前端无比飞速发展的今天，你能想到吗？我们的项目还存在于后端的java工程中，这意味着我修改一行任意的js、css或者html都是要后端同学，重新编译打包，重新发布，这个过程大概要持续半个小时。</p>
+<p>该项目是从2011年公司成立的时候就在做的，那个时候jQuery还是很流行的，后来angularjs的出现，让这些开发者也跃跃欲试，所以我们的项目可谓真的是大量的jQuery代码夹杂这少量的angularjs来组成。</p>
+<p>最开始接手从简单的 issue 开始处理，每天都好像能获得一些代价与惊喜，我改了一行看似没什么副作用的代码，谁知道，另外一个地方就出错了，每天被各种bug缠绕，终于理解为什么这个项目之前迭代速度如此之慢？同时也不能够理解为什么如此重要的项目不好好的重构一番。</p>
+<p>在2017年的12月底，我实在是受不了了，开发体验差的实在难以忍受，一直向上反馈，当时的想法是：接下来不重构还继续维护这个，我立马辞职。终于取得了一些时间和人力，可以去重构这个项目，兴奋之情溢于言表。</p>
+<h3 id="重构前的项目架构："><a href="#重构前的项目架构：" class="headerlink" title="重构前的项目架构："></a>重构前的项目架构：</h3><p>jQuery + AngularJs1.2.19 + gulp</p>
+<h3 id="项目存在问题："><a href="#项目存在问题：" class="headerlink" title="项目存在问题："></a>项目存在问题：</h3><ol>
+<li>前后端代码同一仓库，难以管理</li>
+<li>代码组织杂乱，查找代码非常难，基本全局搜索</li>
+<li>技术使用混乱，可能是当时angular不成熟</li>
+<li>基本没有组件话</li>
+<li>用户体验差，维护成本搞，开发效率慢</li>
+<li>少有人愿意维护，新加入人员学习成本高</li>
+<li>多个模块混在一起</li>
+</ol>
+<h2 id="重构目标"><a href="#重构目标" class="headerlink" title="重构目标"></a>重构目标</h2><p>前后端分离，前端可单独测试、发布<br>拆分前端模块，将混在一起的5个模块分离<br>引入公司提供的组件，提高开发效率<br>减少维护成本，提高用户体验<br>去掉对jQuery技术的使用<br>编写开发文档，统一编码风格，降低新人加入成本</p>
+<h2 id="重构计划"><a href="#重构计划" class="headerlink" title="重构计划"></a>重构计划</h2><p>代码按照模块进行拆分，每个模块独立打包发布，适配前端Jenkins系统（已完成，稳步运行于线上）<br>前端画布流程图的重构（已完成，稳步运行线上）<br>节点开发重构 （正在进行中）<br>页面主框架重构 （开发中）<br>新系统融合，性能优化 （未开始）<br>加入nodejs层，适配不合理的api接口（未开始）</p>
+<h2 id="重构人员"><a href="#重构人员" class="headerlink" title="重构人员"></a>重构人员</h2><p>架构设计都是由我们的架构师同学来做，在这个过程中，我主要是写代码，然后负责和产品、开发经理、测试同学沟通需求，人力资源，上线计划，灰度发布后的调研，反馈，所以写这篇总结还是有些担忧，很怕有的地方会不到位。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-1/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-refactor-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/26/refactor-4/">前端项目重构总结（4）-节点重构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们的线上跑着大大小小40个节点，有的单一节点代码量达到3k+行，实在是乱的令人发指，重复的代码随处可见，肉眼所及之处看到很多<code>ctrl+c/v</code>过来的代码，这种代码既不敢删除，也不敢随意改动，生怕会影响到其他地方。真正应了那句：祖传代码，请勿随意改动！</p>
+<h2 id="技术架构："><a href="#技术架构：" class="headerlink" title="技术架构："></a>技术架构：</h2><p>AngularJs1.x + es2015 + webpack</p>
+<h3 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h3><blockquote>
+<p>肯定会有同学鄙视，Angular都发布6了，你们还在使用1，真是low。只能说很无奈，我们也想过使用更新的、更流行的技术。</p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><p>节点部分全部为表单设计，所做的事情就是添加表单，验证合法性，提交给后端保存数据。但是我对于 React 的认识比较浅显，认为它不适合做这样大批量的表单业务场景，因此放弃。</p>
+</blockquote>
+<h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><p>这几年 Vue 火的真是一塌糊涂，我也想在项目中去尝试一下，但是选择 Vue 代表着所有的组件全部得自己编写，或者在市面上流行的 Vue 组件再包一层，符合我们的UI风格。</p>
+<h4 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h4><p>当然最终还是选择了Angular1.x来进行开发。原因有以下几点：</p>
+<ul>
+<li>公司目前web端的系统都是Angular1.x来编写。</li>
+<li>使用它可以很快拉来新的开发，大家对于技术栈比较熟悉，上手快。</li>
+<li>目前公司提供的组件库是基于 Angular1.x而编写的，可直接使用，和其余模块UI完全一致。</li>
+<li>重构时间问题。</li>
+</ul>
+<h2 id="编码风格"><a href="#编码风格" class="headerlink" title="编码风格"></a>编码风格</h2><p>不想再罗列这些文字，直接看链接：<a href="https://github.com/kuitos/kuitos.github.io/issues/34">https://github.com/kuitos/kuitos.github.io/issues/34</a></p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">src </div><div class="line">    nodes   // 节点集合</div><div class="line">        xxx  // 单一节点</div><div class="line">            index.js           // 入口文件</div><div class="line">            body.url.html      // 模板文件</div><div class="line">            footer.url.html    // 所有节点均以弹框形式展现，此为弹框底部模板</div><div class="line">            index.scss         // css</div><div class="line">            loader.js          // 与后端交互的 api </div><div class="line">            Controller.js      // 业务逻辑</div><div class="line">            mock.js            // 模拟数据</div><div class="line">    </div><div class="line">    common  // 公共的一些服务之类，包含utils，interceptor,decorator等        </div><div class="line">	components // 公共组件</div><div class="line">	    styles // 基础的css文件</div><div class="line">	        base.scss         // 基本css，其中覆盖组件库的一些特定样式</div><div class="line">	        mixin.scss        // 带变量公共css</div><div class="line">	        placeholder.scss  // 不带变量的公共css</div><div class="line">	        variables.scss    // 项目中经常使用的字体、大小、颜色常量</div><div class="line">	        </div><div class="line">	config.js   // app初始化配置</div><div class="line">	index.js    // app入口</div><div class="line">build  // 打包配置</div><div class="line">    config.js        // 配置打包输出</div><div class="line">    webpack.base.js  // webpack基本配置</div><div class="line">    webpack.dev.js   // webpack开发模式</div><div class="line">    webpack.prod.js  // webpack生产环境</div><div class="line">.editorconfig  // 编辑器设置</div><div class="line">.gitlab-ci.yml  // gitlab ci 任务配置</div><div class="line">package.json</div></pre></td></tr></table></figure>
+<h2 id="代码Review"><a href="#代码Review" class="headerlink" title="代码Review"></a>代码Review</h2><p>由于架构师同学的撤出，我们新加入了3个同学来帮忙进行重构。人多了，虽然项目中也设置了 eslint 校验，但是很多编码习惯是无法限制的，因此我也简单的制定了一个代码Review Check List，要求大家在提交代码之前做一下检查，避免一些不必要的时间浪费。毕竟组织这些人在一起进行 code review 还是比较花费时间的，因此大家需要一些统一的标准（check list 后面一篇文档单独贴出来）。</p>
+<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>重构的工作量是巨大的，繁杂的，时间久了难免会让人产生厌倦的心里，作为我重构的主导者，所以我制定了一个分享的机制，每周五下午由一个同学进行分享，时间控制在半个小时到一个小时之间，可以讲一个很小的点，让大家讨论起来，每个人在这一个小时之内放松一下，也有所收获。目前看起来执行的还不错，希望能够继续保持下去！</p>
+<h2 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h2><ul>
+<li>业务，还是对于业务的不熟悉，这是最大的问题。</li>
+<li>api交互，接口的不合理性让人分分钟想骂街。</li>
+</ul>
+<h2 id="提高"><a href="#提高" class="headerlink" title="提高"></a>提高</h2><ul>
+<li>之前有4名同学一起开发，现在还有3个，目前还剩下10个节点所有都要开发完成啦。</li>
+<li>这次我们换了产品经理，她虽然也不熟悉，但是她会去学习，和听取建议啦。</li>
+</ul>
+<h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>目前已经进行了3个月，正处于开发、测试、上线的过程中，尤其是等待测试的节点很多。等到彻底结束后再做总结。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>结果是未知的，自我感觉还是不错的，等待国庆结束后的第一波上线，接受用户的反馈结果。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-4/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-refactor-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/26/refactor-3/">前端项目重构总结（3）-画布流程图重构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么从这里开始？架构师同学问我的时候，我说从流程画布开始，因为这是我们最重要模块的主要核心。线上用户对于流程图的吐槽和需求是最多的，如果把它放到后面，只怕重构这个事情推动到最后，整个人会处于一个比较疲惫的状态，不会再有这么大的心劲。事实证明：这是我做的最正确，最刺激的一个决定。</p>
+<blockquote>
+<p>架构设计是由我们架构师所做，我只是搬砖到这里。</p>
+</blockquote>
+<h2 id="老系统技术"><a href="#老系统技术" class="headerlink" title="老系统技术"></a>老系统技术</h2><p>JQuery + mxGraph </p>
+<h2 id="新架构设计"><a href="#新架构设计" class="headerlink" title="新架构设计"></a>新架构设计</h2><p>angularjs + gojs + mobx + mmlpx + typescript (按字母顺序排名)</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>提供一个可复用的流程图组件，且组件结构自顶向下拆解后能保证每一部分独立且简单易用。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>用函数的方式表示，流程图组件架构大概如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> flowDiagram = workspace(createDiagram(flowchart(flowLoader(id))), createPalette(palette(repeatNodeGroup(paletteLoader()))))</div></pre></td></tr></table></figure>
+<h4 id="组织架构"><a href="#组织架构" class="headerlink" title="组织架构"></a><a href="https://www.processon.com/view/link/59e6b6eae4b06e04d963329e" target="_blank" rel="external">组织架构</a></h4><p>顶层 <code>workspace</code> 作为容器组件，与<a href="https://github.com/mmlpxjs/mmlpx"> mmlpx</a> 组件建立数据关联，通过 <code>props</code> 将数据分发至下层的展示型组件。</p>
+<p>展示型组件与容器组件之间的交互遵循 <code>props down, events up</code>  原则。</p>
+<p>画布及节点调色板调用 canvas 库绘图（目前是 gojs ），理论上这一层需要做到可替换。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944090667-2a59ef03-bab1-4864-975e-4f73716b4ab2.png" alt="architecture.png | center | 594x459"></p>
+<h4 id="mmlpx-架构"><a href="#mmlpx-架构" class="headerlink" title="mmlpx 架构"></a><a href="https://github.com/mmlpxjs/mmlpx">mmlpx</a> 架构</h4><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537944277274-65d4f629-d0e5-4921-91f5-75b4a5e7cb4f.png" alt="mmlpx.png | center | 598x690"></h4><h2 id="重重困难"><a href="#重重困难" class="headerlink" title="重重困难"></a>重重困难</h2><ul>
+<li>typescript + AngularJs1.x + mobx 全新技术组合方式的适应与开发。</li>
+<li>开发人力只有架构师同学加我，人力严重不足，开发工作量巨大。</li>
+<li>对于业务了解的不够深入，很多逻辑无从得知，只能翻看老代码，严重影响开发进度。</li>
+<li>后端api接口相当不合理，里面为了适配，做了层层的数据转换（其实这是可以预见的，前端这么烂，后端又能好到哪里去）。</li>
+<li>产品经理支持力度不够，对于不合理的设计还要保持线上，争吵无数。</li>
+<li>与老系统的融合，遇到了很多意想不到的坑，添加适配。</li>
+<li>灰度上线，部分用户不习惯新版本，要求回退（这对于我们打击不小）。可能和我们的2B的项目有关，很多用户已经习惯了老版本的东西，不愿意接受新的事物。</li>
+</ul>
+<h2 id="开发时间"><a href="#开发时间" class="headerlink" title="开发时间"></a>开发时间</h2><p>2个人，从开发到上线，经历了3个月吧。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>在灰度发布上线之后，1000多家客户，有7家执意使用老版本，就因为小小功能的变更，这也充分说明用户习惯的问题，不要随便去更改一个用户已经完全习惯了的产品设计。收到这些反馈之后，我们又开始了二轮画布优化的开发，开发到上线差不多一个月，最终让客户完全接受了我们新版本的功能，也收到一些正向的反馈，实在是为之开心。</p>
+<p>这是咨询我们的运营同学，在优化版本上线以后，有没有用户要求回退，或者有没有什么吐槽的点：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2018/png/164495/1537945650619-4ac214d4-27cc-42bf-8cd2-7030feffb386.png" alt="result.png | center | 393x306"></p>
+<p>是不是有一种开心的感觉？<br>得到这个讯息之后，我便可以安心的开始下一步的重构了。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-3/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-refactor-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/26/refactor-2/">前端项目重构总结（2）-前后端分离</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="模块拆分要点"><a href="#模块拆分要点" class="headerlink" title="模块拆分要点"></a>模块拆分要点</h2><ol>
+<li>静态资源 <code>context path</code> 调整。整合前端发布体系后，所有前端资源均在同一静态服务器目录下，所以单一系统的入口会变成 <code>//xx.com/${systemName}/index.html</code>，对于老系统需要手动替换静态资源路径，包括通过 css 引用的图片、img 标签引用的图片、ng-include 或 路由 引用的 html 等。开发期则需要在 express 中加入静态资源上下文，如 <code>app.use(&quot;/${systemManagement}&quot;,express.static(path.join(__dirname, &#39;src&#39;)))</code>。使用 es6 开发并借助 webpack 打包的系统则只需简单修改 output 配置即可。</li>
+<li>api 接口 <code>context path</code> 调整。新系统不采用老的各模块独立域名架构，如果后端 api 并未使用服务化方式开发(<code>接口无系统前缀</code>)，则需前端在 ajax 中统一加入前缀(可以在拦截器中添加)，并在前端静态资源服务器配置好前缀接口转发规则。</li>
+<li>消除系统中在运行时通过判断 location 从而确认所处环境的方式。不同环境的不同代码版本在编译期确定。<em> </em>webpack 借助 htmlWebpackPlugin，旧系统使用 gulp html replace 方式。</li>
+<li>项目中拆出客户端 portal。顶部菜单组件化、portal 组件化，方便其他独立系统(如系统管理、账户管理)调用。遵循 纯组件 —&gt; portal lib 渐进式设计原则(先提供纯 portal 组件，再提供相应的完整 lib，喊数据服务等)。</li>
+<li>目录结构</li>
+</ol>
+<ul>
+<li>增加 src、mock 文件夹。 src 为源码目录(原始系统代码)，mock 为接口 mock 目录(原始系统 routes 目录)。</li>
+<li>src 中目录结构跟老版本模块一致，老版本中引入的外部资源(css、imgs、lib 等)放入 src/assets 目录。</li>
+</ul>
+<h2 id="重构步骤"><a href="#重构步骤" class="headerlink" title="重构步骤"></a>重构步骤</h2><ol>
+<li>按照上面的模块拆分要点，改造好代码</li>
+<li>在Jenkins中创建好相应的系统部署任务</li>
+<li>配置nginx做好静态资源转发</li>
+</ol>
+<h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>2个人，拆分5个模块，从入手到灰度全部上线，花费 1 个月。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2018/09/26/refactor-2/" class="archive-article-date">
+  	<time datetime="2018-09-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refactor/">refactor</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-javascript_little" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/javascript_little/">javascript小知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h4><p>变量赋值分为两个动作：</p>
+<ol>
+<li>如果当前没有声明过，那编译器会在当前作用域声明一个。</li>
+<li>运行时引擎会在作用域查找该变量，如果找到就对其赋值。</li>
+</ol>
+<p>查询有：LHS查询和RHS查询。<br><code>LHS</code>：赋值操作的目标是谁。<br><code>RHS</code>：谁是赋值操作的源头，restrieve his source value(取到它的源值)。<br>举个栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// RHS引用，取到a的值。</span></div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="comment">// LHS引用，只需要对=2这个赋值操作找到一个目标</span></div><div class="line">a = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<p>查看下面这个函数分别有几次LHS和RHS？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = a;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> c = foo(<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<p>其中有3次LHS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c = foo(2)</div><div class="line">a = 2</div><div class="line">b =a</div></pre></td></tr></table></figure></p>
+<p>4次RHS：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foo</div><div class="line">a //因为要把a的值赋给b</div><div class="line">a+b中的a和别分别一次</div></pre></td></tr></table></figure></p>
+<h4 id="函数表达式和函数声明简单区分"><a href="#函数表达式和函数声明简单区分" class="headerlink" title="函数表达式和函数声明简单区分"></a>函数表达式和函数声明简单区分</h4><p>使用关键字<code>function</code>来判断是否为第一词来区分，如果是为函数声明，如果不是那么就是函数表达式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数表达式</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">xxx</span>(<span class="params"></span>)</span>&#123;&#125;)();</div><div class="line"><span class="comment">// 函数声明</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">xxx</span>(<span class="params"></span>)</span></div></pre></td></tr></table></figure></p>
+<h4 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h4><p>IIFE: Immediately Invoked Function Expression（立即执行函数表达式）。</p>
+<h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4><p>所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程称为“提升”。</p>
+<p>函数声明会被提前到普通变量之前，如果存在同名的函数，后面的函数声明会覆盖前面的。</p>
+<p>所有的变量都是先有声明，再有赋值。栗子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"><span class="comment">// 第一步为编译阶段任务</span></div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="comment">// 第二步执行阶段任务</span></div><div class="line">a = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<h4 id="如何判断this"><a href="#如何判断this" class="headerlink" title="如何判断this"></a>如何判断this</h4><ol>
+<li>函数是否在new中调用？如果是，<code>this</code>绑定的是新创建的对象。</li>
+<li>函数是否通过call、apply或者硬绑定？如果是，<code>this</code>绑定的是指定的对象。</li>
+<li>函数是否在某个上下文中调用？如果是，<code>this</code>绑定上下文对象。</li>
+<li>如果都不是，使用默认绑定。严格模式绑定到<code>undefined</code>，否则为全局对象。</li>
+<li>foo.call(null) 使用默认绑定规则。</li>
+<li>箭头函数的绑定是无法被修改的（不适用于前4条规则），继承外层函数调用的<code>this</code>绑定。</li>
+</ol>
+<h4 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h4><ol>
+<li>writeable：属性的值是否可以修改。</li>
+<li>configable：属性的值可配置。如果是可以配置的，那么就可以使用<code>defineProperty()</code>方法来修改属性描述符。这种设置为单向，不可取消。意思是可以从<code>true</code>到false，但是不能从<code>false</code>到<code>true</code>。如果值为<code>false</code>则禁止删除这个属性。</li>
+<li>enumerable:是否为可枚举的。如果是<code>false</code>那么在使用<code>for...in</code>的时候不会出现。</li>
+</ol>
+<p>PS：今天看到随手写在本子上的，整理写下来，以备查看。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/11/17/javascript_little/" class="archive-article-date">
+  	<time datetime="2017-11-17T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-11-17</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack2-entry-output" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -321,303 +684,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-angular-gulp-es5" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/angular-gulp-es5/">step by step建立一个angular+gulp+es5项目</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="源码地址：https-github-com-silence717-angular-gulp-seed"><a href="#源码地址：https-github-com-silence717-angular-gulp-seed" class="headerlink" title="源码地址：https://github.com/silence717/angular-gulp-seed"></a>源码地址：<a href="https://github.com/silence717/angular-gulp-seed">https://github.com/silence717/angular-gulp-seed</a></h4><h2 id="创建一个空文件夹名字任意，此项目为angular-gulp-seed"><a href="#创建一个空文件夹名字任意，此项目为angular-gulp-seed" class="headerlink" title="创建一个空文件夹名字任意，此项目为angular-gulp-seed"></a>创建一个空文件夹名字任意，此项目为angular-gulp-seed</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir angular-gulp-seed</div></pre></td></tr></table></figure>
-<h2 id="初始化工程"><a href="#初始化工程" class="headerlink" title="初始化工程"></a>初始化工程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
-<h2 id="创建项目基本目录结构如下："><a href="#创建项目基本目录结构如下：" class="headerlink" title="创建项目基本目录结构如下："></a>创建项目基本目录结构如下：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+src</div><div class="line">	+app	        // 业务模块</div><div class="line">		-app.js	// 应用入口</div><div class="line">		+demo   // 业务模块目录，所有子模块均遵循此目录</div><div class="line">		    - module.js      // 模块声明文件</div><div class="line">		    - controller.js  // vm层</div><div class="line">		    - index.html     // 主入口模板</div><div class="line">		    - router.js      // 模块路由文件</div><div class="line">		    - style.css      // 模块样式</div><div class="line">		+home</div><div class="line">	+assets	        // 静态资源目录</div><div class="line">		-images</div><div class="line">		-css</div><div class="line">	+common	        // 公共服务</div><div class="line">	+components	// 公共组件</div><div class="line">	+scripts         // gulp脚本</div><div class="line">	    - gulp.build.js   // build任务</div><div class="line">	    - gulp.common.js  // dev,build公共任务</div><div class="line">	    - gulp.config.js  // 基础配置</div><div class="line">	    - gulp.dev.js     // dev任务</div><div class="line">	index.html  // 主页面</div><div class="line"></div><div class="line">package.json</div></pre></td></tr></table></figure>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/11/10/angular-gulp-es5/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/10/angular-gulp-es5/" class="archive-article-date">
-  	<time datetime="2016-11-10T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-10</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-qiyue2ansheng" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/01/qiyue2ansheng/">【电影】七月与安生</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>周六晚上闲来无事，宅在家里看了一部电影《七月与安生》，很久不看这种国产的青春文艺片，但是这部没有堕胎，没有车祸的电影让我触动很大。  </p>
-<p>七月，一个乖巧听话的孩子，按照大人设计好的轨迹一步步成长，最后过上一眼就能看到头的生活，也许这就是家人所谓的平淡与安稳。可是七月的心情一直向往去流浪，去过安生的生活。  </p>
-<p>安生，一个真性情的女子，13岁的相识让她与七月成为命中注定的好友，两个人相爱相杀。为了七月，安生开始了流浪，过上了一种七月永远也想不到的生活，后来安生在讲述自己过往生活那种轻描淡写的语气，我很是心疼。而安生一直渴望有一个安稳的生活，不用再去流浪。  </p>
-<p>记得吵架的时候，七月吼着对安生说：在这个世界上，没有人比我更爱你！希望我们每个人的身边都有这样一个人，当你没有了一切的时候，还有一个人爱着你。  </p>
-<p>最后两个彼此羡慕的人交换了人生，各自都过上了彼此想要的生活：一个拥有了安定的生活，一个终于开始流浪去看风景。然而我太天真了，七月的生命定格在了27岁，这些故事也是安生用七月的笔名书写。七月就是安生，安生亦是七月！  </p>
-<p>我们终究应该要过自己想要的生活还是按照期待的生活着？我不知道。。。  </p>
-<p>我听说，如果我踩着一个人的影子，这个人就不会走远了。  </p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/01/qiyue2ansheng/" class="archive-article-date">
-  	<time datetime="2016-11-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-01</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-qinghaihu" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/10/qinghaihu/">青海湖20160805-20160808</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直想去西藏和环青海湖骑行，工作的原因却一直也没有时间。直到7月底一直还在纠结到底要不要来一场说走就走的旅行，刚好工作出现了一些问题，想给自己一个假期放松一下，然后就开始订票，做攻略，联系包车。</p>
-<h3 id="8月5号"><a href="#8月5号" class="headerlink" title="8月5号"></a>8月5号</h3><p>下班直接奔向火车站一张硬座车票开始开始踏上期待已久的旅途，很多年没有坐过绿皮硬座火车，夜晚也是难熬之极。</p>
-<h3 id="8月6号"><a href="#8月6号" class="headerlink" title="8月6号"></a>8月6号</h3><p>早晨到达西宁，包车的师傅来接了我们，然后和三个新疆朋友一起开始开始了这趟旅行。</p>
-<p>第一站日月山，山上有两个亭子，一个日亭一个月亭，据说是文成公主出塞的时候休息的地方。</p>
-<p>第二站倒淌河，地方建有文成公主雕像，栩栩如生。位于青藏高原第一镇倒淌河镇，“天下河水皆向东，唯有此溪向西流”。文成公主当时和亲嫁给吐蕃松赞干布，在去西藏的过程中，到达日月山，回首不见长安，西望一片荒凉，念家乡思父母，悲恸不止，挥泪西行，公主的泪水便汇成了这条倒淌河。</p>
-<p>第三站青海湖，一直向往的地方！车越开越近，蓝色的青海湖，慢慢的清晰。蓝蓝的天，白白的云，黄色的油菜花，颜色搭配起来令人心旷神怡。青海湖的美，词穷，有关美景，只有你置身其中，才可以明明白白的感受到，它不只给你的眼睛做了spa，美妙的是，会让你释怀很多之前的困扰……</p>
-<p><img src="/images/qinghaihu/qinghaihu.jpg" alt=""></p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/10/10/qinghaihu/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/10/qinghaihu/" class="archive-article-date">
-  	<time datetime="2016-10-10T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-10</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/旅行/">旅行</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-w3c-vs-whatwg" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/09/w3c-vs-whatwg/">【翻译】W3C vs. WhatWG HTML5 标准-差异记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>原文地址：<a href="http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/">http://developer.telerik.com/featured/w3c-vs-whatwg-html5-specs-differences-documented/</a>**</p>
-</blockquote>
-<p>几周以前，HTML5成为W3C的一个正式推荐。我在SitePoint上针对这一事件讨论了<a href="http://www.sitepoint.com/5-obsolete-features-html5/">5个有趣但现在过时的功能</a> 。<br>问题在于W3C标准是同一硬币的一面。从HTML的这个版本开始，开发者和浏览器供应商可以在相同标记语言的两种不同风格之间进行选择：W3C开发的规范和WHATWG开发的规范。</p>
-<blockquote>
-<p>译者注：WHATWG：Web Hypertext Application Technology Working Group，网页超文本应用技术工作小组，是一个以推动网络标准为目的而成立的组织。（为了准确，后面不做翻译）</p>
-</blockquote>
-<p>就大部分而言，这些规范都是相同或者说非常相似的，但是几年过去之后，越来越多的差异出现。你会关心他们吗？在大多数情况下不会，因为它对你和你的项目差异很小，或者浏览器供应商会支持这两个标准。然而，在短期内，那些影响已给定功能实现的差异可能对你比较重要。每个浏览器供应商遵循规范都有自己的需求。例如<a href="https://groups.google.com/forum/#!msg/mozilla.dev.platform/BnY1261cNJo/MdkaT_EX6M0J">来自于Mozilla的David Baron目前声明</a>：</p>
-<blockquote>
-<p>当W3C和WHATWG的HTML标准不同时，我们倾向于遵循WHATWG标准。</p>
-</blockquote>
-<p>在这篇文章里，我们将解决W3C和WHATWG标准之间的一些差异，在每个部分的结尾我会给出我对差异的看法。这并不是一个全面的列表，但是足够让你在这个问题有自己的观点。</p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/10/09/w3c-vs-whatwg/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/09/w3c-vs-whatwg/" class="archive-article-date">
-  	<time datetime="2016-10-09T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-09</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-study-materials-collection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/08/study-materials-collection/">学习资料网址收集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>都是平时学习过程中收集的一些网址，有需要的可以看看！</p>
-<h4 id="angular"><a href="#angular" class="headerlink" title="angular"></a>angular</h4><p>angularjs新闻: <a href="https://angular.jsnews.io/">https://angular.jsnews.io/</a></p>
-<h5 id="angular1-x"><a href="#angular1-x" class="headerlink" title="angular1.x"></a>angular1.x</h5><ol>
-<li>官网： <a href="https://angularjs.org/">https://angularjs.org/</a></li>
-<li>es5最佳实践: <a href="https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md">https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md</a></li>
-<li>es2015最佳实践: <a href="https://github.com/toddmotto/angular-styleguide/blob/master/i18n/zh-cn.md">https://github.com/toddmotto/angular-styleguide/blob/master/i18n/zh-cn.md</a></li>
-<li>codeReview checklist: <a href="https://angularcodereview.com/angularjs/">https://angularcodereview.com/angularjs/</a></li>
-<li>angular移动版ionic: <a href="http://www.ionic.wang/">http://www.ionic.wang/</a></li>
-<li>A Better Way to Learn AngularJS: <a href="https://thinkster.io/a-better-way-to-learn-angularjs">https://thinkster.io/a-better-way-to-learn-angularjs</a></li>
-<li>1.5生命周期钩子英文原文: <a href="https://toddmotto.com/angular-1-5-lifecycle-hooks">https://toddmotto.com/angular-1-5-lifecycle-hooks</a></li>
-<li>1.5生命周期钩子中文翻译: <a href="https://github.com/Jocs/jocs.github.io/issues/3">https://github.com/Jocs/jocs.github.io/issues/3</a></li>
-<li>angularjs优化心得: <a href="https://github.com/atian25/blog/issues/5">https://github.com/atian25/blog/issues/5</a></li>
-</ol>
-</blockquote>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/10/08/study-materials-collection/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/08/study-materials-collection/" class="archive-article-date">
-  	<time datetime="2016-10-08T00:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -630,7 +696,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 杨芳
+    		&copy; 2018 杨芳
     		<span id="busuanzi_container_page_pv">
 			  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
 			</span>
@@ -688,7 +754,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    				<a href="/tags/angular/" style="font-size: 18px;">angular</a> <a href="/tags/angular-resource/" style="font-size: 10px;">angular-resource</a> <a href="/tags/angular-ui-router/" style="font-size: 10px;">angular-ui-router</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/refactor/" style="font-size: 16px;">refactor</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/webpack2/" style="font-size: 12px;">webpack2</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/翻译/" style="font-size: 16px;">翻译</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     			</div>
     	</section>
     
